@@ -15,7 +15,9 @@ const App = () => {
       <AboutUs />
 
 
+
     </div>
+    
   );
 };
 
