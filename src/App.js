@@ -1,24 +1,17 @@
 import React from 'react';
-import './App.css';
-import Header from './components/Header';
-import Navigation from './components/Navigation';
-import HeroSection from './components/HeroSection';
-import InfoCards from './components/InfoCards';
-import AboutUs from './components/AboutUs';
-const App = () => {
+import {Route, Routes } from 'react-router-dom';
+import Home from './components/Home';
+import LoginPage from './components/Login';
+
+function App() {
   return (
-    <div className="flex flex-col pb-20 bg-white">
-      <Header />
-      <Navigation />
-      <HeroSection />
-      <InfoCards />
-      <AboutUs />
 
+      <Routes>
+        <Route exact path="/" element={<Home/>} />
+        <Route path="/login" element={<LoginPage/>} />
+      </Routes>
 
-
-    </div>
-    
   );
-};
+}
 
 export default App;
