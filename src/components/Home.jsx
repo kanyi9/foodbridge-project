@@ -14,8 +14,10 @@ function Home() {
       <InfoCards />
       <AboutUs />
       {/* Add more components as needed */}
+
     </div>
   );
 }
 
 export default Home;
+
