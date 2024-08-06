@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, Link } from 'react-router-dom';
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -30,22 +30,22 @@ const Navigation = () => {
           {navItems.map((item, index) => {
             const isActive = location.pathname === `/${item.toLowerCase().replace(/\s+/g, '-')}`;
             return (
-              <a 
+              <Link 
                 key={index} 
-                href={`#${item.toLowerCase().replace(/\s+/g, '-')}`} 
+                to={`/${item.toLowerCase().replace(/\s+/g, '-')}`} 
                 className={`block px-3 py-2 text-lg font-medium border-b-2 transition-colors duration-300 ${isActive ? 'text-orange-500 border-orange-500' : 'text-gray-700 hover:text-gray-900 hover:border-gray-900'}`}
               >
                 {item}
-              </a>
+              </Link>
             );
           })}
         </div>
         <button className="mt-4 md:mt-0 px-6 py-2 text-white uppercase whitespace-nowrap bg-orange-300 rounded-[34px]">
           Donate
         </button>
-        <button className="mt-4 md:mt-0 px-6 py-2 text-white uppercase whitespace-nowrap bg-gray-700 rounded-[34px]">
+        <Link to="/login" className="mt-4 md:mt-0 px-6 py-2 text-white uppercase whitespace-nowrap bg-gray-700 rounded-[34px]">
           Sign In
-        </button>
+        </Link>
       </div>
     </nav>
   );
