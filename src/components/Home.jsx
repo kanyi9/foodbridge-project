@@ -14,7 +14,6 @@ function Home() {
       <HeroSection />
       <InfoCards />
       <AboutUs />
-      <Footer/>
 
       {/* Add more components as needed */}
 

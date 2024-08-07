@@ -2,6 +2,7 @@ import React from 'react';
 import appleLogo from '../images/apple-logo.svg';
 import googleLogo from '../images/google-logo.svg';
 import { Link } from 'react-router-dom';
+
 function InputField({ label, placeholder, type = 'text' }) {
   return (
     <div className="flex flex-col mt-5 w-full font-medium min-h-[58px]">
