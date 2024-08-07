@@ -15,9 +15,12 @@ function Home() {
       <HeroSection />
       <InfoCards />
       <AboutUs />
+
       <TeamSection />
       <Footer/>
       
+
+
 
       {/* Add more components as needed */}
 
