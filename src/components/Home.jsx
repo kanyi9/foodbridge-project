@@ -4,6 +4,7 @@ import Navigation from './Navigation';
 import HeroSection from './HeroSection';
 import InfoCards from './InfoCards';
 import AboutUs from './AboutUs';
+import Footer from './Footer';
 
 function Home() {
   return (
