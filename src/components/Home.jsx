@@ -3,10 +3,10 @@ import Header from './Header';
 import Navigation from './Navigation';
 import HeroSection from './HeroSection';
 import InfoCards from './InfoCards';
-import AboutUs from './AboutUs'
-import Campaigns from './Campaigns'
-import TeamSection from './TeamSection'
-import Footer from './Footer'; 
+import AboutUs from './AboutUs';
+import TeamSection from './TeamSection';
+import Footer from './Footer';
+import Campaigns from './Campaigns';
 
 function Home() {
   return (
@@ -16,17 +16,9 @@ function Home() {
       <HeroSection />
       <InfoCards />
       <AboutUs />
-      <Campaigns/>
-
-      
+      <Campaigns />
       <TeamSection />
       <Footer/>
-      
-
-
-
-      {/* Add more components as needed */}
-
     </div>
   );
 }

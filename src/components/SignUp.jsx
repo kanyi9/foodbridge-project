@@ -69,7 +69,7 @@ function SignupPage() {
                 <label>
                   <input type="checkbox" className="sr-only" />
                   <span>
-                    I agree to the <a href="#" className="underline">terms & policy</a>
+                    I agree to the <a href="/terms-and-conditions" className="underline">terms & policy</a>
                   </span>
                 </label>
               </div>
@@ -88,7 +88,7 @@ function SignupPage() {
             </p>
           </div>
         </div>
-        <a href="#" className="z-10 self-center mt-0 text-sm font-medium">
+        <a href="/" className="z-10 self-center mt-0 text-sm font-medium">
         </a>
       </section>
     </main>
