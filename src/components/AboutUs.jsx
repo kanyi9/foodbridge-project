@@ -1,4 +1,5 @@
 
+
 import React from 'react';
 
 const AboutUs = () => {
@@ -28,5 +29,4 @@ const AboutUs = () => {
     </section>
   );
 };
-
 export default AboutUs;
