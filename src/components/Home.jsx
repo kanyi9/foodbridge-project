@@ -15,6 +15,7 @@ function Home() {
       <InfoCards />
       <AboutUs />
       <Footer/>
+
       {/* Add more components as needed */}
 
     </div>
