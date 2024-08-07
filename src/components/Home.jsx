@@ -6,6 +6,7 @@ import InfoCards from './InfoCards';
 import AboutUs from './AboutUs';
 import TeamSection from './TeamSection';
 import Footer from './Footer';
+import Campaigns from './Campaigns';
 
 function Home() {
   return (
@@ -15,15 +16,9 @@ function Home() {
       <HeroSection />
       <InfoCards />
       <AboutUs />
-
+      <Campaigns />
       <TeamSection />
       <Footer/>
-      
-
-
-
-      {/* Add more components as needed */}
-
     </div>
   );
 }
