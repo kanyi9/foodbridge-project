@@ -6,7 +6,7 @@ const AboutUs = () => {
   return (
     <section id="about-us" className="flex flex-wrap gap-5 items-center self-center mt-36 max-md:mt-10">
       <div className="flex flex-col grow shrink self-stretch my-auto min-w-[240px] w-[493px] max-md:max-w-full">
-        <h2 className="max-w-full text-4xl leading-none text-yellow-800 w-[312px]">About Us</h2>
+        <h2 className="max-w-full text-xl leading-none font-semibold text-orange-600 w-[312px]">About Us</h2>
         <p className="mt-3.5 max-w-full text-xl leading-7 text-neutral-500 w-[603px] max-md:max-w-full">
           Lorem Ipsum is simply dummy text of the printing typesetting dummy text ever when an unknown printer took a galley of type and scrambled it to make a type specimen book.
           <br /><br />
