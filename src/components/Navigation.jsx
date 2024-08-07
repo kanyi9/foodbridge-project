@@ -1,6 +1,7 @@
 
 import React, { useState } from 'react';
-import {  Link } from 'react-router-dom';
+import {  useLocation, Link } from 'react-router-dom';
+
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -9,6 +10,16 @@ const Navigation = () => {
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
+  };
+
+  const scrollToAnchor = (anchorName) => {
+    const anchorElement = document.getElementById(anchorName);
+    if (anchorElement) {
+      window.scrollTo({
+        top: anchorElement.offsetTop,
+        behavior: 'smooth',
+      });
+    }
   };
 
   return (
@@ -29,22 +40,41 @@ const Navigation = () => {
         <div className="flex flex-col md:flex-row md:items-center">
           {navItems.map((item, index) => {
             const isActive = location.pathname === `/${item.toLowerCase().replace(/\s+/g, '-')}`;
-            return (
-              <Link 
-                key={index} 
-                to={`/${item.toLowerCase().replace(/\s+/g, '-')}`} 
-                className={`block px-3 py-2 text-lg font-medium border-b-2 transition-colors duration-300 ${isActive ? 'text-orange-500 border-orange-500' : 'text-gray-700 hover:text-gray-900 hover:border-gray-900'}`}
-              >
-                {item}
-              </Link>
-            );
+            const anchorName = item.toLowerCase().replace(/\s+/g, '-');
+            if (item === 'Events') {
+              return (
+                <button
+                  key={index}
+                  onClick={() => scrollToAnchor('campaigns')}
+                  className={`block px-3 py-2 text-lg font-medium border-b-2 transition-colors duration-300 ${isActive ? 'text-orange-500 border-orange-500' : 'text-gray-700 hover:text-gray-900 hover:border-gray-900'}`}
+                >
+                  {item}
+                </button>
+              );
+            } else {
+              return (
+                <Link
+                  key={index}
+                  to={`/${item.toLowerCase().replace(/\s+/g, '-')}`}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    scrollToAnchor(anchorName);
+                  }}
+                  className={`block px-3 py-2 text-lg font-medium border-b-2 transition-colors duration-300 ${isActive ? 'text-orange-500 border-orange-500' : 'text-gray-700 hover:text-gray-900 hover:border-gray-900'}`}
+                >
+                  {item}
+                </Link>
+              );
+            }
           })}
         </div>
         <button className="mt-4 md:mt-0 px-6 py-2 text-white uppercase whitespace-nowrap bg-orange-300 rounded-[34px]">
           Donate
         </button>
         <Link to="/login" className="mt-4 md:mt-0 px-6 py-2 text-white uppercase whitespace-nowrap bg-gray-700 rounded-[34px]">
-          Sign In
+          <button className="mt-4 md:mt-0 px-6 py-2 text-white uppercase whitespace-nowrap bg-gray-700 rounded-[34px]">
+            Sign In
+          </button>
         </Link>
       </div>
     </nav>

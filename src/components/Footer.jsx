@@ -10,16 +10,16 @@ const Footer = () => {
             Lorem ipsum dolor sit amet consectetur adipiscing elit Ut et.
           </p>
           <div className="flex mt-4 space-x-4">
-            <a href="#" className="text-gray-300 hover:text-white">
+            <a href="/" className="text-gray-300 hover:text-white">
               <i className="fab fa-instagram"></i>
             </a>
-            <a href="#" className="text-gray-300 hover:text-white">
+            <a href="/" className="text-gray-300 hover:text-white">
               <i className="fab fa-facebook"></i>
             </a>
-            <a href="#" className="text-gray-300 hover:text-white">
+            <a href="/" className="text-gray-300 hover:text-white">
               <i className="fab fa-xing"></i>
             </a>
-            <a href="#" className="text-gray-300 hover:text-white">
+            <a href="/" className="text-gray-300 hover:text-white">
               <i className="fab fa-pinterest"></i>
             </a>
           </div>
@@ -28,21 +28,21 @@ const Footer = () => {
           <div>
             <h3 className="text-lg font-bold text-white">Get Involved</h3>
             <ul className="mt-2 space-y-1">
-              <li><a href="#" className="hover:text-white">About Us</a></li>
-              <li><a href="#" className="hover:text-white">Volunteer</a></li>
-              <li><a href="#" className="hover:text-white">Causes</a></li>
-              <li><a href="#" className="hover:text-white">Projects</a></li>
-              <li><a href="#" className="hover:text-white">Team</a></li>
+              <li><a href="/" className="hover:text-white">About Us</a></li>
+              <li><a href="/" className="hover:text-white">Volunteer</a></li>
+              <li><a href="/" className="hover:text-white">Causes</a></li>
+              <li><a href="/" className="hover:text-white">Projects</a></li>
+              <li><a href="/" className="hover:text-white">Team</a></li>
             </ul>
           </div>
           <div>
             <h3 className="text-lg font-bold text-white">Utility</h3>
             <ul className="mt-2 space-y-1">
-              <li><a href="#" className="hover:text-white">Style Guide</a></li>
-              <li><a href="#" className="hover:text-white">Licences</a></li>
-              <li><a href="#" className="hover:text-white">Password</a></li>
-              <li><a href="#" className="hover:text-white">404 Page</a></li>
-              <li><a href="#" className="hover:text-white">Changelog</a></li>
+              <li><a href="/" className="hover:text-white">Style Guide</a></li>
+              <li><a href="/" className="hover:text-white">Licences</a></li>
+              <li><a href="/" className="hover:text-white">Password</a></li>
+              <li><a href="/" className="hover:text-white">404 Page</a></li>
+              <li><a href="/" className="hover:text-white">Changelog</a></li>
             </ul>
           </div>
           <div>

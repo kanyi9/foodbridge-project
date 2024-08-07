@@ -1,8 +1,14 @@
+
 import React from 'react';
+import campaignImage1 from '../images/campaign1.jpg';
+import campaignImage2 from '../images/campaign2.webp';
+import campaignImage3 from '../images/campaign3.jpg';
 
 const Campaigns = () => {
+  const campaignImages = [campaignImage1, campaignImage2, campaignImage3];
+
   return (
-    <div className="min-h-screen bg flex items-center justify-center">
+    <div id="campaigns" className="min-h-screen bg flex items-center justify-center">
       <div className="max-w-5xl mx-auto p-6 bg-white rounded-md">
         <h1 className="text-orange-600 text-lg font-semibold">Campaigns</h1>
         <h2 className="text-gray-800 text-3xl font-bold">
@@ -10,11 +16,11 @@ const Campaigns = () => {
         </h2>
         <button className="bg-orange-400 text-white py-2 px-4 rounded-md mt-4">More Causes</button>
         <div className="flex mt-8 space-x-4">
-          {[1, 2, 3].map((item, index) => (
+          {campaignImages.map((image, index) => (
             <div key={index} className="bg-white shadow-md rounded-md overflow-hidden">
               <img
-                src={`path-to-image-${index + 1}.jpg`}
-                alt="Campaign"
+                src={image}
+                alt={`Campaign ${index + 1}`}
                 className="w-full h-48 object-cover"
               />
               <div className="p-4">
