@@ -4,7 +4,7 @@ import Navigation from './Navigation';
 import HeroSection from './HeroSection';
 import InfoCards from './InfoCards';
 import AboutUs from './AboutUs';
-
+import Footer from './Footer';
 function Home() {
   return (
     <div className="flex flex-col pb-20 bg-white">
@@ -13,6 +13,7 @@ function Home() {
       <HeroSection />
       <InfoCards />
       <AboutUs />
+      <Footer />
       {/* Add more components as needed */}
 
     </div>
