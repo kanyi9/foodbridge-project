@@ -4,7 +4,8 @@ import Navigation from './Navigation';
 import HeroSection from './HeroSection';
 import InfoCards from './InfoCards';
 import AboutUs from './AboutUs';
-import Footer from './Footer';
+import TeamSection from './TeamSection'
+import Footer from './Footer'; 
 
 function Home() {
   return (
@@ -14,6 +15,7 @@ function Home() {
       <HeroSection />
       <InfoCards />
       <AboutUs />
+      <TeamSection />
       <Footer/>
 
       {/* Add more components as needed */}

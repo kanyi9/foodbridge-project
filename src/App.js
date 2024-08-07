@@ -4,10 +4,9 @@ import '@fortawesome/fontawesome-free/css/all.min.css';
 import {Route, Routes } from 'react-router-dom';
 import Home from './components/Home';
 import LoginPage from './components/Login';
-
 import SignupPage from './components/SignUp';
 
-import TeamSection from './components/TeamSection';
+
 
 
 function App() {
@@ -20,8 +19,7 @@ function App() {
         <Route path="/signup" element={<SignupPage/>} />
       </Routes>
      
-      <TeamSection />
-     <Footer />
+     
     </div>
   
      
