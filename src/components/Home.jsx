@@ -3,7 +3,8 @@ import Header from './Header';
 import Navigation from './Navigation';
 import HeroSection from './HeroSection';
 import InfoCards from './InfoCards';
-import AboutUs from './AboutUs';
+import AboutUs from './AboutUs'
+import Campaigns from './Campaigns'
 import TeamSection from './TeamSection'
 import Footer from './Footer'; 
 
@@ -15,8 +16,9 @@ function Home() {
       <HeroSection />
       <InfoCards />
       <AboutUs />
+      <Campaigns/>
 
-      <TeamSection />
+      
       <TeamSection />
       <Footer/>
       

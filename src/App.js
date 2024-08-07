@@ -20,8 +20,8 @@ function App() {
         <Route path="/signup" element={<SignupPage/>} />
       </Routes>
      
-      <TeamSection />
-     <Footer />
+      
+     
     </div>
   
      

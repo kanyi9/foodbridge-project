@@ -1,8 +1,9 @@
+
 import React from 'react';
 
 const Campaigns = () => {
   return (
-    <div className="min-h-screen bg flex items-center justify-center">
+    <div id="campaigns" className="min-h-screen bg flex items-center justify-center">
       <div className="max-w-5xl mx-auto p-6 bg-white rounded-md">
         <h1 className="text-orange-600 text-lg font-semibold">Campaigns</h1>
         <h2 className="text-gray-800 text-3xl font-bold">
