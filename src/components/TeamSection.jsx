@@ -66,4 +66,4 @@ const App = () => {
   );
 };
 
-export default TeamSection;
+export default App;
