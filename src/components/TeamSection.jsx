@@ -1,7 +1,22 @@
 import React from 'react';
 import '@fortawesome/fontawesome-free/css/all.min.css';
+import Nancy from '../images/Nancy.jpeg';
+import Brian from '../images/Brian.jpeg';
+import Rufus from '../images/Rufus.jpeg';
+import Kanyi from '../images/Kanyi.jpeg';
+import Cyrus from '../images/Cyrus.jpeg';
+import Jason from '../images/Jason.jpeg';
 
 const TeamSection = () => {
+  const volunteers = [
+    { name: 'Nancy', image: Nancy },
+    { name: 'Brian', image: Brian },
+    { name: 'Rufus', image: Rufus },
+    { name: 'Kanyi', image: Kanyi },
+    { name: 'Cyrus', image: Cyrus },
+    { name: 'Jason', image: Jason },
+  ];
+
   return (
     <div className="bg-white py-12">
       <div className="text-center">
@@ -9,21 +24,25 @@ const TeamSection = () => {
         <h1 className="text-3xl font-bold text-gray-800 mt-2">Meet Our Volunteers</h1>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 py-8 px-4">
-        {['Nancy', 'Brian', 'Rufus', 'Kanyi', 'Cyrus', 'Jason'].map((name, index) => (
+        {volunteers.map((volunteer, index) => (
           <div key={index} className="text-center">
-            <div className="w-48 h-64 bg-gray-300 mb-4 mx-auto"></div>
-            <h3 className="font-medium">{name}</h3>
+            <img 
+              src={volunteer.image} 
+              alt={`${volunteer.name}`} 
+              className="w-48 h-64 object-cover mx-auto mb-4 rounded-lg"
+            />
+            <h3 className="font-medium">{volunteer.name}</h3>
             <div className="flex justify-center space-x-2 mt-2">
-              <a href="#" aria-label={`${name} Facebook`}>
+              <a href="#" aria-label={`${volunteer.name} Facebook`}>
                 <i className="fab fa-facebook-f"></i>
               </a>
-              <a href="#" aria-label={`${name} Twitter`}>
+              <a href="#" aria-label={`${volunteer.name} Twitter`}>
                 <i className="fab fa-twitter"></i>
               </a>
-              <a href="#" aria-label={`${name} Instagram`}>
+              <a href="#" aria-label={`${volunteer.name} Instagram`}>
                 <i className="fab fa-instagram"></i>
               </a>
-              <a href="#" aria-label={`${name} Pinterest`}>
+              <a href="#" aria-label={`${volunteer.name} Pinterest`}>
                 <i className="fab fa-pinterest"></i>
               </a>
             </div>
