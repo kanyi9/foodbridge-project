@@ -7,12 +7,12 @@ const DonationPage = () => {
       };
   return (
     <div className="container mx-auto p-4 pt-6 md:p-6 lg:p-12 flex justify-center items-center h-screen">
-      <div className="bg-brown-500 shadow-md rounded-md p-6 w-full md:w-1/2 lg:w-1/3">
-        <h1 className="text-3xl font-bold mb-4 text-center">Make a Donation</h1>
+      <div className="  bg-yellow-800 shadow-md rounded-md p-6 w-full md:w-1/2 lg:w-1/3">
+        <h1 className="text-3xl font-bold mb-4 text-center textcolor-white">Make a Donation</h1>
         <p className="text-lg mb-6 text-center">Your donation will help us make a difference in the lives of those in need.</p>
         <form>
-          <div className="flex flex-wrap mb-4 justify-center">
-            <label className="block w-full md:w-1/2 mb-2 md:mb-0">
+          <div className="flex flex-wrap mb-1 justify-center">
+            <label className="block w-full md:w-1/1 mb-2 md:mb-0">
               <span className="text-lg">Amount:</span>
               <input
                 type="number"
@@ -20,7 +20,7 @@ const DonationPage = () => {
                 placeholder="Enter amount"
               />
             </label>
-            <label className="block w-full md:w-1/2 mb-2 md:mb-0">
+            <label className="block w-full md:w-1/1 mb-2 md:mb-0">
               <span className="text-lg">Frequency:</span>
               <select className="w-full p-2 pl-10 text-lg">
                 <option value="one-time">One-time</option>
