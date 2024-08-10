@@ -8,9 +8,11 @@ const AboutUs = () => {
       <div className="flex flex-col grow shrink self-stretch my-auto min-w-[240px] w-[493px] max-md:max-w-full">
         <h2 className="max-w-full text-xl leading-none font-semibold text-orange-600 w-[312px]">About Us</h2>
         <p className="mt-3.5 max-w-full text-xl leading-7 text-neutral-500 w-[603px] max-md:max-w-full">
-          Lorem Ipsum is simply dummy text of the printing typesetting dummy text ever when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+        At FootBridge, we believe that no one should go hungry. Our mission is to create a community-driven platform where volunteers can contribute their time, resources, and skills to help those in need. Whether it's through food donations, financial contributions, or volunteering, we provide an opportunity for everyone to make a meaningful impact.
           <br /><br />
-          It has survived not only five centuries, but also the leap into electronic typesetting, remaining when an unknown printer took a galley of type and scrambled it to make a type specimen book. essentially.
+          FootBridge was born out of the desire to bring people together to combat hunger and food insecurity. We work closely with local communities, food banks, and shelters to ensure that donations reach those who need them most. Every contribution, big or small, helps us move closer to a world where everyone has access to nutritious meals.
+        <br /><br />
+        
         </p>
       </div>
       <div className="flex flex-col grow shrink justify-center self-stretch px-10 py-12 my-auto text-gray-700 bg-gray-100 min-w-[240px] w-[439px] max-md:px-5 max-md:max-w-full">

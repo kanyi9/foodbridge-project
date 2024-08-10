@@ -7,7 +7,11 @@ const Footer = () => {
         <div className="mb-8 md:mb-0">
           <h2 className="text-2xl font-bold text-white">FoodBridge</h2>
           <p className="mt-2">
-            Lorem ipsum dolor sit amet consectetur adipiscing elit Ut et.
+          Join us in our mission to fight hunger and build a stronger, more compassionate community.
+          <br /><br/>
+           Together, we can make a difference, one meal at a time.
+
+
           </p>
           <div className="flex mt-4 space-x-4">
             <a href="/" className="text-gray-300 hover:text-white">
