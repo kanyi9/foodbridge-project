@@ -12,7 +12,7 @@ const AboutUs = () => {
           <br /><br />
           FootBridge was born out of the desire to bring people together to combat hunger and food insecurity. We work closely with local communities, food banks, and shelters to ensure that donations reach those who need them most. Every contribution, big or small, helps us move closer to a world where everyone has access to nutritious meals.
         <br /><br />
-        
+
         </p>
       </div>
       <div className="flex flex-col grow shrink justify-center self-stretch px-10 py-12 my-auto text-gray-700 bg-gray-100 min-w-[240px] w-[439px] max-md:px-5 max-md:max-w-full">
@@ -20,8 +20,8 @@ const AboutUs = () => {
           <h3 className="max-w-full text-2xl font-extrabold rounded-none w-[190px]">Total Donation</h3>
           <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/fc0bf8e949e8d263e2701dad9e950c66a9161883ce2e0fb4bb477b37bfa7ed5a?apiKey=a660b816358840e6b4fa30624def69c6" alt="Donation progress" className="object-contain mt-7 w-full rounded-none" />
           <div className="flex gap-5 justify-between mt-7 w-full text-xl font-extrabold rounded-none">
-            <div>Collection - $5M</div>
-            <div>Goal - $10M</div>
+            <div>Collection - $10M</div>
+            <div>Goal - $24M</div>
           </div>
           <button className="gap-2.5 self-stretch px-11 py-6 mt-10 text-lg font-medium uppercase bg-orange-300 rounded-[34px] max-md:px-5">
             Donate Now
