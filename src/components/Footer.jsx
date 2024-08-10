@@ -10,8 +10,7 @@ const Footer = () => {
           Join us in our mission to fight hunger and build a stronger, more compassionate community.
           <br /><br/>
            Together, we can make a difference, one meal at a time.
-
-
+           
           </p>
           <div className="flex mt-4 space-x-4">
             <a href="/" className="text-gray-300 hover:text-white">
