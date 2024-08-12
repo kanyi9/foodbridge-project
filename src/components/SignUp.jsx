@@ -65,12 +65,9 @@ function SignupPage() {
                 <InputField key={index} {...field} />
               ))}
               <div className="flex gap-1.5 self-start mt-5 text-xs font-medium text-black">
-                <div className="flex shrink-0 self-start h-2.5 rounded-sm w-[9px]" />
-                <label>
-                  <input type="checkbox" className="sr-only" />
-                  <span>
-                    I agree to the <a href="/terms-and-conditions" className="underline">terms & policy</a>
-                  </span>
+                <input type="checkbox" className="h-4 w-4 rounded-sm border-gray-300 text-blue-600 focus:ring-blue-500" />
+                <label className="ml-2">
+                  I agree to the <a href="/terms-and-conditions" className="underline">terms & policy</a>
                 </label>
               </div>
               <Button text="Signup" />
@@ -84,7 +81,6 @@ function SignupPage() {
             </div>
             <p className="flex flex-col self-center mt-6 max-w-full text-sm font-medium text-black min-h-[23px] w-[129px]">
               Have an account? <Link to = "/login"><span className="text-yellow-800">Sign In</span></Link>
-
             </p>
           </div>
         </div>

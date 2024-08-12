@@ -10,7 +10,7 @@ import Campaigns from './Campaigns';
 
 function Home() {
   return (
-    <div className="flex flex-col pb-20 bg-white">
+    <div className="flex flex-col  bg-white">
       <Header />
       <Navigation />
       <HeroSection />
