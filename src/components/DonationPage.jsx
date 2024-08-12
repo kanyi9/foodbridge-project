@@ -8,8 +8,8 @@ const DonationPage = () => {
   return (
     <div className="container mx-auto p-4 pt-6 md:p-6 lg:p-12 flex justify-center items-center h-screen">
       <div className="  bg-yellow-800 shadow-md rounded-md p-6 w-full md:w-1/2 lg:w-1/3">
-        <h1 className="text-3xl font-bold mb-4 text-center textcolor-white">Make a Donation</h1>
-        <p className="text-lg mb-6 text-center">Your donation will help us make a difference in the lives of those in need.</p>
+        <h1 className="text-3xl font-bold mb-1 text-center textcolor-white">Make a Donation</h1>
+        <p className="text-lg mb-1 text-center">Your donation will help us make a difference in the lives of those in need.</p>
         <form>
           <div className="flex flex-wrap mb-1 justify-center">
             <label className="block w-full md:w-1/1 mb-2 md:mb-0">
@@ -29,7 +29,7 @@ const DonationPage = () => {
               </select>
             </label>
           </div>
-          <div className="flex flex-wrap mb-4 justify-center">
+          <div className="flex flex-wrap mb-2 justify-center">
             <label className="block w-full mb-2">
               <span className="text-lg">Payment Method:</span>
               <div className="flex justify-center">
@@ -77,17 +77,8 @@ const DonationPage = () => {
               />
             </label>
           </div>
-          <div className="flex flex-wrap mb-4 justify-center">
-            <label className="block w-full mb-2">
-              <span className="text-lg">Security Code:</span>
-              <input
-                type="text"
-                className="w-full p-2 pl-10 text-lg"
-                placeholder="CVV"
-              />
-            </label>
-          </div>
-          <div className="flex flex-wrap mb-4 justify-center">
+          
+          <div className="flex flex-wrap mb-2 justify-center">
             <label className="block w-full mb-2">
               <span className="text-lg">M-Pesa Number:</span>
               <input
