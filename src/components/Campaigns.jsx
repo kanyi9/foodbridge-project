@@ -3,6 +3,7 @@ import React from 'react';
 import campaignImage1 from '../images/campaign1.jpg';
 import campaignImage2 from '../images/campaign2.webp';
 import campaignImage3 from '../images/campaign3.jpg';
+import { Link } from 'react-router-dom';
 
 const Campaigns = () => {
   const campaignImages = [campaignImage1, campaignImage2, campaignImage3];
@@ -31,7 +32,7 @@ const Campaigns = () => {
                   <span className="text-gray-500">Raised - $5M</span>
                   <span className="text-orange-600">Goal - $10M</span>
                 </div>
-                <button className="bg-orange-400 text-white py-2 px-4 rounded-md mt-4">Donate</button>
+                <Link to='/donation' className="bg-orange-400 text-white py-1 px-4 rounded-md mt-4 li">Donate</Link>
               </div>
             </div>
           ))}
