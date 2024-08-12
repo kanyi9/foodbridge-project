@@ -63,7 +63,7 @@ const DonationPage = () => {
               <span className="text-lg">Card Information:</span>
               <input
                 type="text"
-                className="w-full p-2 pl-10 text-lg border border-gray-300 rounded-md"
+                className="w-full p-2 pl-10 text-lg border border-gray-300 rounded-md text-black"
                 placeholder="Card number"
               />
             </label>
@@ -73,7 +73,7 @@ const DonationPage = () => {
               <span className="text-lg">Expiration Date:</span>
               <input
                 type="text"
-                className="w-full p-2 pl-10 text-lg border border-gray-300 rounded-md"
+                className="w-full p-2 pl-10 text-lg border border-gray-300 rounded-md text-black"
                 placeholder="MM/YY"
               />
             </label>
@@ -83,7 +83,7 @@ const DonationPage = () => {
               <span className="text-lg">M-Pesa Number:</span>
               <input
                 type="text"
-                className="w-full p-2 pl-10 text-lg border border-gray-300 rounded-md"
+                className="w-full p-2 pl-10 text-lg border border-gray-300 rounded-md text-black"
                 placeholder="07xxxxxxxx"
               />
             </label>
