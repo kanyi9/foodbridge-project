@@ -17,7 +17,7 @@ const Footer = () => {
               <i className="fab fa-facebook"></i>
             </a>
             <a href="/" className="text-gray-300 hover:text-white">
-              <i className="fab fa-xing"></i>
+              <i className="fab fa-x-twitter"></i>
             </a>
             <a href="/" className="text-gray-300 hover:text-white">
               <i className="fab fa-pinterest"></i>
@@ -48,10 +48,10 @@ const Footer = () => {
           <div>
             <h3 className="text-lg font-bold text-white">Contact</h3>
             <address className="mt-2 not-italic">
-              <p>660 Brooklyn Street, 88</p>
-              <p>New York</p>
+              <p>Address</p>
+              <p>Address</p>
               <p><a href="mailto:help@foodbridge.com" className="hover:text-white">help@foodbridge.com</a></p>
-              <p>222 888 0000</p>
+              <p>+254 7123456789</p>
             </address>
           </div>
         </div>

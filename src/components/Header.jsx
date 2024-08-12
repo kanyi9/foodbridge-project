@@ -14,7 +14,7 @@ const Header = () => {
           </div>
           <div className="flex gap-2 py-0.5 whitespace-nowrap items-center">
             <FontAwesomeIcon icon={faEnvelope} className="shrink-0 text-white" />
-            <div className="flex-auto">info@foodbridge.com</div>
+            <a href="mailto:help@foodbridge.com"><div className="flex-auto">info@foodbridge.com</div></a>
           </div>
         </div>
         <div className="flex flex-col justify-center px-10 py-3 bg-orange-300 max-md:px-5">
