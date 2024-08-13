@@ -7,7 +7,6 @@ import AboutUs from './AboutUs';
 import TeamSection from './TeamSection';
 import Footer from './Footer';
 import Campaigns from './Campaigns';
-import AdminDashboard from './AdminDashboard';
 
 function Home() {
   return (
