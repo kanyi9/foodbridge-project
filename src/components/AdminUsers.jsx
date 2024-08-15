@@ -9,7 +9,7 @@ const AdminUsers = () => {
     const fetchUsers = async () => {
       const token = localStorage.getItem('adminToken');
       try {
-        const response = await fetch('http://localhost:5000/api/admin/users', {
+        const response = await fetch('https://foodbridge-backend-bd8l.onrender.com/api/admin/users', {
           headers: {
             'Authorization': `Bearer ${token}`,
           },
@@ -27,7 +27,7 @@ const AdminUsers = () => {
   const handleDelete = async (userId) => {
     const token = localStorage.getItem('adminToken');
     try {
-      const response = await fetch(`http://localhost:5000/api/admin/users/${userId}`, {
+      const response = await fetch(`https://foodbridge-backend-bd8l.onrender.com/admin/users/${userId}`, {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${token}`,

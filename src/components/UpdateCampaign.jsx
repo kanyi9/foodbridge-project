@@ -20,7 +20,7 @@ const UpdateCampaign = () => {
       }
 
       try {
-        const response = await fetch(`http://localhost:5000/api/admin/campaigns/${id}`, {
+        const response = await fetch(`https://foodbridge-backend-bd8l.onrender.com/admin/campaigns/${id}`, {
           headers: {
             'Authorization': `Bearer ${token}`,
           },
@@ -68,7 +68,7 @@ const UpdateCampaign = () => {
     }
 
     try {
-      const response = await fetch(`http://localhost:5000/api/admin/campaigns/${id}`, {
+      const response = await fetch(`https://foodbridge-backend-bd8l.onrender.com/api/admin/campaigns/${id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -95,7 +95,7 @@ const UpdateCampaign = () => {
     }
 
     try {
-      const response = await fetch(`http://localhost:5000/api/admin/campaigns/${id}`, {
+      const response = await fetch(`https://foodbridge-backend-bd8l.onrender.com/api/admin/campaigns/${id}`, {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${token}`,

@@ -11,7 +11,7 @@ const AdminDashboard = () => {
     const fetchData = async () => {
       const token = localStorage.getItem('adminToken');
       try {
-        const response = await fetch('http://localhost:5000/api/admin/stats', {
+        const response = await fetch('https://foodbridge-backend-bd8l.onrender.com/api/admin/stats', {
           headers: {
             'Authorization': `Bearer ${token}`
           }

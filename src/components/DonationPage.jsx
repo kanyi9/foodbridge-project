@@ -42,7 +42,7 @@ const DonationPage = () => {
     try {
       const token = localStorage.getItem('token'); // Assuming JWT token is stored in local storage
       const response = await axios.post(
-        'http://localhost:5000/api/donate', // Replace with your backend URL
+        'https://foodbridge-backend-bd8l.onrender.com/api/donate', // Replace with your backend URL
         { amount, message },
         {
           headers: {

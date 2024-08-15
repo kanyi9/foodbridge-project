@@ -27,7 +27,7 @@ const AdminCampaigns = () => {
   const handleDelete = async (id) => {
     const token = localStorage.getItem('adminToken');
     try {
-      await fetch(`http://localhost:5000/api/admin/campaigns/${id}`, {
+      await fetch(`https://foodbridge-backend-bd8l.onrender.com/api/admin/campaigns/${id}`, {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${token}`,
