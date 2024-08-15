@@ -2,6 +2,7 @@ import React from 'react';
 import campaignImage1 from '../images/campaign1.jpg';
 import campaignImage2 from '../images/campaign2.webp';
 import campaignImage3 from '../images/campaign3.jpg';
+import { Link } from 'react-router-dom';
 
 const Campaigns = () => {
   const campaigns = [
@@ -53,6 +54,7 @@ const Campaigns = () => {
                   <span className="text-orange-600">Goal - {campaign.goal}</span>
                 </div>
                 <button className="bg-orange-400 text-white py-2 px-4 rounded-md mt-4">Learn More</button>
+
               </div>
             </div>
           ))}
