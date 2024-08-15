@@ -18,6 +18,7 @@
     "react-scripts": "5.0.1",
     "react-toastify": "^10.0.5",
     "scrollmagic": "^2.0.8",
+    "serve": "^14.2.3",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
