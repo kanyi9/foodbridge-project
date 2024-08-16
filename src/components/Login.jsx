@@ -41,7 +41,7 @@ function LoginPage() {
     e.preventDefault();
 
     try {
-      const response = await axios.post('http://127.0.0.1:5000/login', { email, password });
+      const response = await axios.post('https://foodbridge-backend-bd8l.onrender.com/api/auth/login', { email, password });
       localStorage.setItem('token', response.data.token);
       navigate('/Home'); 
     } catch (error) {
