@@ -9,7 +9,7 @@ const AdminCampaigns = () => {
     const fetchCampaigns = async () => {
       const token = localStorage.getItem('adminToken');
       try {
-        const response = await fetch('http://localhost:5000/api/admin/campaigns', {
+        const response = await fetch('https://foodbridge-backend-bd8l.onrender.com/api/admin/campaigns', {
           headers: {
             'Authorization': `Bearer ${token}`,
           },
