@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import backgroundImage from '../images/login-background.png';
 
@@ -31,7 +33,6 @@ function Button({ text }) {
   );
 }
 
-
 function SignupPage() {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
@@ -51,8 +52,13 @@ function SignupPage() {
       });
       const result = await response.json();
       if (response.ok) {
-        alert(result.message);
-        navigate('/login');  
+        toast.success('Account created, redirecting...', {
+          position: 'top-center', // Default position as a string
+          autoClose: 3000, // Close after 3 seconds
+        });
+        setTimeout(() => {
+          navigate('/login');
+        }, 3000); // Redirect after 3 seconds
       } else {
         setError(result.error || 'Something went wrong');
       }
@@ -111,6 +117,7 @@ function SignupPage() {
           </p>
         </div>
       </div>
+      <ToastContainer />
     </div>
   );
 }
