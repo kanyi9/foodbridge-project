@@ -16,7 +16,7 @@ import AdminUsers from './components/AdminUsers';
 import AdminCampaigns from './components/AdminCampaigns';
 import UpdateCampaign from './components/UpdateCampaign';
 import DiscoverPage from './components/DiscoverPage';
-import FeedbackPage from './components/FeedbackPage';
+import AddCampaign from './components/AddCampaigns';
 function App() {
   return (
     <div>
@@ -34,6 +34,7 @@ function App() {
         <Route path='/admin/campaigns' element={<AdminCampaigns />} />
         <Route path='admin/campaigns/update/:id' element={<UpdateCampaign/>} />
         <Route path='/discover' element={<DiscoverPage />} />
+        <Route path='admin/campaigns/add' element={<AddCampaign/>} />
 
       </Routes>
  </div>

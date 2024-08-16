@@ -156,7 +156,7 @@ const UpdateCampaign = () => {
           />
         </div>
         <button type="submit" className="bg-blue-500 text-white py-2 px-4 rounded">Update Campaign</button>
-        <button type="button" onClick={handleDelete} className="bg-red-500 text-white py-2 px-4 rounded ml-4">Delete Campaign</button>
+        <button type="button" onClick={handleDelete} className="bg-red-500 mt-3 text-white py-2 px-4 rounded ml-4">Delete Campaign</button>
       </form>
     </div>
   );

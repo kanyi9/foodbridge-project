@@ -43,9 +43,19 @@ const AdminCampaigns = () => {
     navigate(`/admin/campaigns/update/${id}`);
   };
 
+  const handleAddCampaign = () => {
+    navigate('/admin/campaigns/add');
+  };
+
   return (
     <div className="min-h-screen bg-gray-100 p-6">
       <h1 className="text-3xl font-semibold text-gray-900 mb-6">Manage Campaigns</h1>
+      <button 
+        className="mb-4 bg-green-500 text-white py-2 px-4 rounded"
+        onClick={handleAddCampaign}
+      >
+        Add Campaign
+      </button>
       <div className="overflow-x-auto">
         <table className="min-w-full bg-white rounded-lg shadow">
           <thead>
