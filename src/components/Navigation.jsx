@@ -1,13 +1,33 @@
-import React, { useState } from 'react';
-import { useLocation, Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useLocation, Link, useNavigate } from 'react-router-dom';
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
   const navItems = ['Home', 'About Us', 'Events', 'Contact Us'];
+
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    console.log('Token:', token); // Debugging line
+    if (token) {
+      setIsLoggedIn(true);
+    } else {
+      setIsLoggedIn(false);
+    }
+    console.log('Is Logged In:', isLoggedIn); // Debugging line
+  }, [isLoggedIn]);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
+  };
+
+  const handleSignOut = () => {
+    console.log('Signing out'); // Debugging line
+    localStorage.removeItem('token');
+    setIsLoggedIn(false);
+    navigate('/login');
   };
 
   const scrollToAnchor = (anchorName) => {
@@ -87,9 +107,19 @@ const Navigation = () => {
         <Link to="/donation" className="mt-4 md:mt-0 px-6 py-2 text-white uppercase whitespace-nowrap bg-orange-300 rounded-[34px]">
           Donate
         </Link>
-        <Link to="/login" className="mt-4 md:mt-0 px-6 py-2 text-white uppercase whitespace-nowrap bg-gray-700 rounded-[34px]">
-          Sign In
-        </Link>
+        <Link to="/admin-login" className="mt-4 md:mt-0 px-6 py-2 text-white uppercase whitespace-nowrap bg-gray-800 rounded-[34px]">
+  Admin
+</Link>
+
+        {isLoggedIn ? (
+          <button onClick={handleSignOut} className="mt-4 md:mt-0 px-6 py-2 text-white uppercase whitespace-nowrap bg-red-700 rounded-[34px]">
+            Sign Out
+          </button>
+        ) : (
+          <Link to="/login" className="mt-4 md:mt-0 px-6 py-2 text-white uppercase whitespace-nowrap bg-teal-700 rounded-[34px]">
+            Sign In
+          </Link>
+        )}
       </div>
     </nav>
   );

@@ -53,7 +53,8 @@ const Campaigns = () => {
                   <span className="text-gray-500">Raised - {campaign.raised}</span>
                   <span className="text-orange-600">Goal - {campaign.goal}</span>
                 </div>
-                <Link to='/donation' className="bg-orange-400 text-white py-1 px-4 rounded-md mt-4 li">Donate</Link>
+                <button className="bg-orange-400 text-white py-2 px-4 rounded-md mt-4">Learn More</button>
+
               </div>
             </div>
           ))}
