@@ -9,22 +9,22 @@ const Campaigns = () => {
       image: campaignImage1,
       title: 'Meal Donation Campaign',
       description: 'Provide meals to those in need by donating food or funds. Every meal counts in our fight against hunger.',
-      raised: '$5M',
-      goal: '$10M',
+      raised: '',
+      goal: '',
     },
     {
       image: campaignImage2,
       title: 'Volunteer Outreach Program',
       description: 'Join our volunteer team to help with meal prep, distribution, and community support. Your time makes a difference.',
-      raised: '$3M',
-      goal: '$8M',
+      raised: '',
+      goal: '',
     },
     {
       image: campaignImage3,
       title: 'Sustainable Food Initiative',
       description: 'Support sustainable farming and eco-friendly food practices to ensure long-term food security for future generations.',
-      raised: '$2M',
-      goal: '$6M',
+      raised: '',
+      goal: '',
     },
   ];
 
@@ -52,7 +52,6 @@ const Campaigns = () => {
                   <span className="text-gray-500">Raised - {campaign.raised}</span>
                   <span className="text-orange-600">Goal - {campaign.goal}</span>
                 </div>
-                <button className="bg-orange-400 text-white py-2 px-4 rounded-md mt-4">Learn More</button>
               </div>
             </div>
           ))}
