@@ -1,22 +1,20 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
-function InputField({ label, name, placeholder, type = 'text', value, onChange }) {
+import backgroundImage from '../images/login-background.png';
+
+function InputField({ label, placeholder, type = 'text', value, onChange }) {
   return (
-    <div className="flex flex-col mt-5 w-full font-medium min-h-[58px]">
-      <label className="gap-2.5 self-start text-sm text-black">
+    <div className="flex flex-col mt-5 w-full font-medium">
+      <label className="self-start text-sm text-gray-700">
         {label}
       </label>
       <input
         type={type}
-        name={name}
         placeholder={placeholder}
         value={value}
         onChange={onChange}
-        className="flex overflow-hidden gap-2.5 items-center py-2.5 pl-2.5 w-full text-xs rounded-xl max-w-[404px] min-h-[32px] text-black"
+        className="py-2.5 px-3 w-full text-sm rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-yellow-500"
         aria-label={label}
       />
     </div>
@@ -25,14 +23,9 @@ function InputField({ label, name, placeholder, type = 'text', value, onChange }
 
 function Button({ text }) {
   return (
-    <div className="flex flex-col pb-2.5 mt-8 bg-slate-100">
-      <button
-        className="flex overflow-hidden justify-center gap-2.5 items-center py-2.5 pl-2.5 w-full bg-yellow-800 rounded-xl max-w-[404px] min-h-[32px]"
-        type="submit"
-      >
-        <span className="z-10 self-center mt-0 text-sm font-bold text-white">
-          {text}
-        </span>
+    <div className="mt-8">
+      <button className="w-full py-3 bg-yellow-500 text-white font-bold rounded-lg hover:bg-yellow-600 transition-colors">
+        {text}
       </button>
     </div>
   );
@@ -40,86 +33,85 @@ function Button({ text }) {
 
 
 function SignupPage() {
-  const navigate = useNavigate();
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    password: ''
-  });
-
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
+  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState(null);
+  const navigate = useNavigate();  
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
-    const { name, email, password } = formData;
-
     try {
-      const response = await fetch('https://foodbridge-backend-bd8l.onrender.com/api/auth/register', {
+      const response = await fetch('http://127.0.0.1:5000/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ username: name, email, password }),
+        body: JSON.stringify({ username, email, password }),
       });
-
-      const data = await response.json();
-
+      const result = await response.json();
       if (response.ok) {
-        toast.success('Registration successful! Redirecting to login...');
-        setTimeout(() => {
-          navigate('/login');
-        }, 3000); // Redirect after 3 seconds
+        alert(result.message);
+        navigate('/login');  
       } else {
-        toast.error(`Registration failed: ${data.msg}`);
+        setError(result.error || 'Something went wrong');
       }
     } catch (error) {
-      toast.error('An error occurred during registration.');
+      setError(error.message);
     }
   };
 
-  const inputFields = [
-    { label: 'Name', name: 'name', placeholder: 'Enter your name', value: formData.name, onChange: handleChange },
-    { label: 'Email address', name: 'email', placeholder: 'Enter your email', type: 'email', value: formData.email, onChange: handleChange },
-    { label: 'Password', name: 'password', placeholder: 'Enter your password', type: 'password', value: formData.password, onChange: handleChange },
-  ];
-
   return (
-    <main className="flex overflow-hidden flex-col justify-center items-center px-20 py-44 bg-white max-md:px-5 max-md:py-24">
-      <ToastContainer />
-      <section className="flex flex-col pb-10 max-w-full w-[404px]">
-        <div className="flex gap-2.5 items-start pb-16">
-          <div className="flex flex-col min-w-[240px] w-[404px] p-6 border border-orange-300 rounded-[45px]">
-            <h1 className="gap-2.5 self-start text-3xl font-medium text-black min-h-[53px]">
-              Join Us Now
-            </h1>
-            <form onSubmit={handleSubmit}>
-              {inputFields.map((field, index) => (
-                <InputField key={index} {...field} />
-              ))}
-              <div className="flex gap-1.5 self-start mt-5 text-xs font-medium text-black">
-                <input type="checkbox" className="h-4 w-4 rounded-sm border-gray-300 text-blue-600 focus:ring-blue-500" />
-                <label className="ml-2">
-                  I agree to the <a href="/terms-and-conditions" className="underline">terms & policy</a>
-                </label>
-              </div>
-              <Button text="Signup" />
-            </form>
-            <div className="overflow-hidden gap-2.5 self-center px-1 mt-14 w-5 text-xs font-medium text-black whitespace-nowrap bg-white max-md:mt-10">
-              Or
-            </div>
+    <div className="flex min-h-screen">
+      {/* Image Section */}
+      <div className="w-1/2 hidden md:block">
+        <img src={backgroundImage} alt="Background" className="w-full h-full object-cover" />
+      </div>
 
-            <p className="flex flex-col self-center mt-6 max-w-full text-sm font-medium text-black min-h-[23px] w-[129px]">
-              Have an account? <Link to="/login"><span className="text-yellow-800">Sign In</span></Link>
-            </p>
+      {/* Signup Form Section */}
+      <div className="flex items-center justify-center w-full md:w-1/2 bg-white px-10 py-12 md:px-16">
+        <div className="bg-white p-8 rounded-3xl shadow-xl w-full">
+          <h1 className="text-4xl font-bold text-gray-800 text-center mb-8">Join Us Now</h1>
+          <form onSubmit={handleSubmit}>
+            <InputField
+              label="Name"
+              placeholder="Enter your name"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+            />
+            <InputField
+              label="Email address"
+              placeholder="Enter your email"
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <InputField
+              label="Password"
+              placeholder="Enter your password"
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            {error && <p className="text-red-500 mt-4">{error}</p>}
+            <div className="flex items-center mt-5">
+              <input type="checkbox" className="h-4 w-4 text-yellow-600 focus:ring-yellow-500 border-gray-300 rounded" />
+              <label className="ml-2 text-gray-700 text-sm">
+                I agree to the <a href="/terms-and-conditions" className="underline">terms & policy</a>
+              </label>
+            </div>
+            <Button text="Signup" />
+          </form>
+          <div className="relative flex justify-center mt-8">
+            <span className="bg-white px-2 text-gray-500">Or</span>
           </div>
+
+          <p className="mt-8 text-center text-gray-700">
+            Have an account? <Link to="/login" className="text-yellow-500 font-semibold">Sign In</Link>
+          </p>
         </div>
-        <a href="/" className="z-10 self-center mt-0 text-sm font-medium">
-        </a>
-      </section>
-    </main>
+      </div>
+    </div>
   );
 }
 

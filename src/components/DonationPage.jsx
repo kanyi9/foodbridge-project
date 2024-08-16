@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { ToastContainer, toast } from 'react-toastify'; // Import toast and ToastContainer from React Toastify
-import 'react-toastify/dist/ReactToastify.css'; // Import Toastify styles
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const InputField = ({ label, placeholder, type = 'text', value, onChange }) => {
   return (
@@ -37,13 +37,14 @@ const Button = ({ text, className, onClick }) => {
 const DonationPage = () => {
   const [amount, setAmount] = useState('');
   const [message, setMessage] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState('');
 
   const handleDonate = async () => {
     try {
-      const token = localStorage.getItem('token'); // Assuming JWT token is stored in local storage
+      const token = localStorage.getItem('token');
       const response = await axios.post(
-        'https://foodbridge-backend-bd8l.onrender.com/api/donate', // Replace with your backend URL
-        { amount, message },
+        'http://localhost:5000/api/donate',
+        { amount, message, phone_number: phoneNumber },
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -52,48 +53,38 @@ const DonationPage = () => {
       );
 
       if (response.status === 201) {
-        toast.success('Thank you for your donation!');
-        setAmount('');
-        setMessage('');
+        toast.success('Donation initiated successfully!');
       } else {
-        toast.info('Thank you for your donation.');
+        toast.error('Failed to initiate donation.');
       }
     } catch (error) {
-      console.error('Donation error:', error);
-      toast.success('Thank You for your donation.');
+      toast.error('An error occurred while processing your donation.');
     }
   };
 
   return (
-    <main className="flex overflow-hidden flex-col justify-center items-center px-20 py-56 bg-white max-md:px-5 max-md:py-24">
-      <ToastContainer /> {/* Toast container for React Toastify */}
-      <div className="relative flex flex-col w-[404px] p-6 border border-orange-300 rounded-[45px]">
-        <h1 className="text-3xl font-medium text-black mb-6">Make a Donation</h1>
-        <form
-          className="flex flex-col w-full"
-          onSubmit={(e) => {
-            e.preventDefault();
-            handleDonate();
-          }}
-        >
-          <InputField
-            label="Amount"
-            placeholder="Enter amount"
-            type="number"
-            value={amount}
-            onChange={(e) => setAmount(e.target.value)}
-          />
-          <InputField
-            label="Message"
-            placeholder="Leave a message"
-            type="text"
-            value={message}
-            onChange={(e) => setMessage(e.target.value)}
-          />
-          <Button text="Donate Now" className="mt-6" />
-        </form>
-      </div>
-    </main>
+    <div className="donation-page">
+      <ToastContainer />
+      <InputField
+        label="Amount"
+        placeholder="Enter amount"
+        value={amount}
+        onChange={(e) => setAmount(e.target.value)}
+      />
+      <InputField
+        label="Message"
+        placeholder="Enter a message (optional)"
+        value={message}
+        onChange={(e) => setMessage(e.target.value)}
+      />
+      <InputField
+        label="Phone Number"
+        placeholder="Enter your phone number"
+        value={phoneNumber}
+        onChange={(e) => setPhoneNumber(e.target.value)}
+      />
+      <Button text="Donate" onClick={handleDonate} />
+    </div>
   );
 };
 
