@@ -27,7 +27,7 @@ function App() {
         <Route path="/login" element={<LoginPage/>} />
         <Route path="/signup" element={<SignupPage/>} />
         <Route path="/donation" element={<DonationPage/>} />
-        <Route path='feedback' element={<FeedbackPage/>} />
+        <Route path='feedback' element={<ContactUs/>} />
         <Route path="/admin-login" element={<AdminLogin />} />
         <Route path='/admin' element={<AdminDashboard />} />
         <Route path='/admin/users' element={<AdminUsers />} />
