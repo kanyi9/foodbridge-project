@@ -1,6 +1,5 @@
 import React from 'react';
 import aboutUsImage from '../images/campaign2.webp'; // Replace with your image path
-
 const AboutUs = () => {
   return (
     <section id="about-us" className="flex flex-wrap items-center justify-between mt-24 md:mt-36 px-6 md:px-12">
