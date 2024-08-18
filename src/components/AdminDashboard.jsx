@@ -1,11 +1,8 @@
-// AdminDashboard.js
-
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import AdminNavbar from './AdminNavbar'; 
 
 const AdminDashboard = () => {
-  const [stats, setStats] = useState({ users: 0, donations: 0, campaigns: 0 });
-  const [feedback, setFeedback] = useState([]);
+  const [stats, setStats] = useState({ users: 0, donations: 0, campaigns: 0, members: 0 });
 
   useEffect(() => {
     const fetchData = async () => {
@@ -18,7 +15,6 @@ const AdminDashboard = () => {
         });
         const data = await response.json();
         setStats(data.stats);
-        setFeedback(data.feedback);
       } catch (error) {
         console.error('Error fetching dashboard data:', error);
       }
@@ -28,56 +24,31 @@ const AdminDashboard = () => {
   }, []);
 
   return (
-    <div className="flex min-h-screen bg-gray-100">
-      {/* Sidebar */}
-      <aside className="w-64 bg-gray-800 text-white">
-        <div className="p-4 text-2xl font-bold">Admin Panel</div>
-        <nav className="mt-4">
-          <ul>
-            <li>
-              <Link to="/admin/users" className="block py-2.5 px-4 hover:bg-gray-700">Manage Users</Link>
-            </li>
-
-            <li>
-              <Link to="/admin/campaigns" className="block py-2.5 px-4 hover:bg-gray-700">Campaigns</Link>
-            </li>
-          </ul>
-        </nav>
-      </aside>
-
-      {/* Main Content */}
-      <div className="flex-1 p-6">
-        <h1 className="text-3xl font-semibold text-gray-900">Dashboard</h1>
+    <div className="flex">
+      <AdminNavbar />
+      <main className="flex-1 p-8 bg-gray-100 min-h-screen">
+        <h1 className="text-3xl font-semibold text-gray-900 mb-6">Dashboard</h1>
 
         {/* Summary Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-6">
-          <div className="p-4 bg-white rounded-lg shadow">
-            <h2 className="text-lg font-semibold text-gray-700">Total Users</h2>
-            <p className="text-2xl font-bold text-gray-900">{stats.users}</p>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="p-8 bg-gradient-to-r from-orange-400 to-red-500 text-white rounded-xl shadow-lg transform transition duration-500 hover:scale-105 hover:shadow-2xl">
+            <h2 className="text-lg font-semibold text-center">Total Users</h2>
+            <p className="text-5xl font-extrabold mt-4 text-center">{stats.users}</p>
           </div>
-          <div className="p-4 bg-white rounded-lg shadow">
-            <h2 className="text-lg font-semibold text-gray-700">Total Donations</h2>
-            <p className="text-2xl font-bold text-gray-900">${stats.donations}</p>
+          <div className="p-8 bg-gradient-to-r from-green-400 to-teal-500 text-white rounded-xl shadow-lg transform transition duration-500 hover:scale-105 hover:shadow-2xl">
+            <h2 className="text-lg font-semibold text-center">Total Donations</h2>
+            <p className="text-5xl font-extrabold mt-4 text-center">${stats.donations}</p>
           </div>
-          <div className="p-4 bg-white rounded-lg shadow">
-            <h2 className="text-lg font-semibold text-gray-700">Active Campaigns</h2>
-            <p className="text-2xl font-bold text-gray-900">{stats.campaigns}</p>
+          <div className="p-8 bg-gradient-to-r from-blue-400 to-indigo-500 text-white rounded-xl shadow-lg transform transition duration-500 hover:scale-105 hover:shadow-2xl">
+            <h2 className="text-lg font-semibold text-center">Active Campaigns</h2>
+            <p className="text-5xl font-extrabold mt-4 text-center">{stats.campaigns}</p>
           </div>
-        </div>
-
-        {/* Recent Feedback */}
-        <div className="mt-8">
-          <h2 className="text-2xl font-semibold text-gray-900">Recent Feedback</h2>
-          <div className="mt-4 p-4 bg-white rounded-lg shadow">
-            {/* Feedback List */}
-            <ul>
-              {feedback.map((item, index) => (
-                <li key={index} className="py-2 border-b border-gray-200">{item}</li>
-              ))}
-            </ul>
+          <div className="p-8 bg-gradient-to-r from-purple-400 to-pink-500 text-white rounded-xl shadow-lg transform transition duration-500 hover:scale-105 hover:shadow-2xl">
+            <h2 className="text-lg font-semibold text-center">Total Members</h2>
+            <p className="text-5xl font-extrabold mt-4 text-center">{stats.members}</p>
           </div>
         </div>
-      </div>
+      </main>
     </div>
   );
 };

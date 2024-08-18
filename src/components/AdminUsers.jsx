@@ -1,5 +1,3 @@
-// AdminUsers.js
-
 import React, { useEffect, useState } from 'react';
 
 const AdminUsers = () => {
@@ -24,51 +22,59 @@ const AdminUsers = () => {
     fetchUsers();
   }, []);
 
-  const handleDelete = async (userId) => {
+  const handleToggleStatus = async (userId, isActive) => {
     const token = localStorage.getItem('adminToken');
     try {
-      const response = await fetch(`https://foodbridge-backend-bd8l.onrender.com/admin/users/${userId}`, {
-        method: 'DELETE',
+      const response = await fetch(`https://foodbridge-backend-bd8l.onrender.com/api/admin/users/${userId}/status`, {
+        method: 'PUT',
         headers: {
           'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json',
         },
+        body: JSON.stringify({ isActive: !isActive }),
       });
 
       if (response.ok) {
-        setUsers(users.filter(user => user.id !== userId));
+        setUsers(users.map(user => 
+          user.id === userId ? { ...user, isActive: !isActive } : user
+        ));
       } else {
-        console.error('Error deleting user:', await response.json());
+        console.error('Error updating user status:', await response.json());
       }
     } catch (error) {
-      console.error('Error deleting user:', error);
+      console.error('Error updating user status:', error);
     }
   };
 
   return (
     <div className="min-h-screen bg-gray-100 p-6">
-      <h1 className="text-3xl font-semibold text-gray-900 mb-6">Manage Users</h1>
+      <h1 className="text-3xl font-semibold text-gray-900 mb-8">Manage Users</h1>
       <div className="overflow-x-auto">
-        <table className="min-w-full bg-white rounded-lg shadow">
-          <thead>
+        <table className="min-w-full bg-white rounded-lg shadow-lg">
+          <thead className="bg-gray-200">
             <tr>
-              <th className="py-2 px-4 border-b">ID</th>
-              <th className="py-2 px-4 border-b">Username</th>
-              <th className="py-2 px-4 border-b">Email</th>
-              <th className="py-2 px-4 border-b">Actions</th>
+              <th className="py-3 px-6 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">ID</th>
+              <th className="py-3 px-6 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Username</th>
+              <th className="py-3 px-6 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Email</th>
+              <th className="py-3 px-6 text-center text-xs font-semibold text-gray-600 uppercase tracking-wider">Actions</th>
             </tr>
           </thead>
           <tbody>
             {users.map((user) => (
-              <tr key={user.id}>
-                <td className="py-2 px-4 border-b">{user.id}</td>
-                <td className="py-2 px-4 border-b">{user.username}</td>
-                <td className="py-2 px-4 border-b">{user.email}</td>
-                <td className="py-2 px-4 border-b">
+              <tr key={user.id} className="hover:bg-gray-100 transition duration-150 ease-in-out">
+                <td className="py-4 px-6 border-b border-gray-200">{user.id}</td>
+                <td className="py-4 px-6 border-b border-gray-200">{user.username}</td>
+                <td className="py-4 px-6 border-b border-gray-200">{user.email}</td>
+                <td className="py-4 px-6 border-b border-gray-200 text-center">
                   <button 
-                    onClick={() => handleDelete(user.id)}
-                    className="text-red-500 hover:text-red-700"
+                    onClick={() => handleToggleStatus(user.id, user.isActive)}
+                    className={`py-2 px-4 rounded-full text-white font-semibold transition duration-300 ${
+                      user.isActive 
+                      ? 'bg-green-500 hover:bg-green-700' 
+                      : 'bg-red-500 hover:bg-red-700'
+                    }`}
                   >
-                    Delete
+                    {user.isActive ? 'Deactivate' : 'Activate'}
                   </button>
                 </td>
               </tr>
