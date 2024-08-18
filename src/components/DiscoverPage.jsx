@@ -33,29 +33,29 @@ const DiscoverPage = () => {
       <section className="py-8 px-6">
         <h2 className="text-3xl font-bold text-yellow-800 mb-6 text-center">Success Stories</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
-          <div className="bg-white p-6 rounded-lg shadow-lg">
-            <img src={story1} alt="Story 1" className="w-full h-60 object-cover mb-4 rounded-lg" />
+          <div className="bg-white p-6 rounded-lg shadow-lg transform transition duration-300 hover:-translate-y-2 hover:shadow-2xl">
+            <img src={story1} alt="Story 1" className="w-full h-60 object-cover mb-4 rounded-lg transform transition duration-300 hover:scale-105" />
             <h3 className="text-xl font-semibold mb-2">Empowering Local Farmers</h3>
             <p className="text-gray-700 mb-4">
               Through our agricultural training programs, we’ve empowered over 200 local farmers with sustainable farming techniques. Our initiative has not only increased their crop yields but also improved their livelihoods.
             </p>
           </div>
-          <div className="bg-white p-6 rounded-lg shadow-lg">
-            <img src={story2} alt="Story 2" className="w-full h-60 object-cover mb-4 rounded-lg" />
+          <div className="bg-white p-6 rounded-lg shadow-lg transform transition duration-300 hover:-translate-y-2 hover:shadow-2xl">
+            <img src={story2} alt="Story 2" className="w-full h-60 object-cover mb-4 rounded-lg transform transition duration-300 hover:scale-105" />
             <h3 className="text-xl font-semibold mb-2">Building Better Schools</h3>
             <p className="text-gray-700 mb-4">
               With the help of donations and volunteers, we’ve built and renovated schools in underserved communities, providing children with a safe and conducive learning environment that fosters education and growth.
             </p>
           </div>
-          <div className="bg-white p-6 rounded-lg shadow-lg">
-            <img src={story3} alt="Story 3" className="w-full h-60 object-cover mb-4 rounded-lg" />
+          <div className="bg-white p-6 rounded-lg shadow-lg transform transition duration-300 hover:-translate-y-2 hover:shadow-2xl">
+            <img src={story3} alt="Story 3" className="w-full h-60 object-cover mb-4 rounded-lg transform transition duration-300 hover:scale-105" />
             <h3 className="text-xl font-semibold mb-2">Providing Clean Water</h3>
             <p className="text-gray-700 mb-4">
               Our clean water initiative has successfully installed water purification systems in villages that previously had no access to clean drinking water, significantly reducing waterborne diseases.
             </p>
           </div>
-          <div className="bg-white p-6 rounded-lg shadow-lg">
-            <img src={story4} alt="Story 4" className="w-full h-60 object-cover mb-4 rounded-lg" />
+          <div className="bg-white p-6 rounded-lg shadow-lg transform transition duration-300 hover:-translate-y-2 hover:shadow-2xl">
+            <img src={story4} alt="Story 4" className="w-full h-60 object-cover mb-4 rounded-lg transform transition duration-300 hover:scale-105" />
             <h3 className="text-xl font-semibold mb-2">Supporting Refugee Families</h3>
             <p className="text-gray-700 mb-4">
               We’ve provided essential support to refugee families, including shelter, food, and educational resources, helping them rebuild their lives and integrate into new communities.
@@ -72,4 +72,3 @@ const DiscoverPage = () => {
 };
 
 export default DiscoverPage;
-
