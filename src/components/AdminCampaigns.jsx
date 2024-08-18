@@ -48,52 +48,60 @@ const AdminCampaigns = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 p-6">
-      <h1 className="text-3xl font-semibold text-gray-900 mb-6">Manage Campaigns</h1>
-      <button 
-        className="mb-4 bg-green-500 text-white py-2 px-4 rounded"
-        onClick={handleAddCampaign}
-      >
-        Add Campaign
-      </button>
-      <div className="overflow-x-auto">
-        <table className="min-w-full bg-white rounded-lg shadow">
-          <thead>
-            <tr>
-              <th className="py-2 px-4 border-b">ID</th>
-              <th className="py-2 px-4 border-b">Name</th>
-              <th className="py-2 px-4 border-b">Date</th>
-              <th className="py-2 px-4 border-b">Location</th>
-              <th className="py-2 px-4 border-b">Description</th>
-              <th className="py-2 px-4 border-b">Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {campaigns.map((campaign) => (
-              <tr key={campaign.id}>
-                <td className="py-2 px-4 border-b">{campaign.id}</td>
-                <td className="py-2 px-4 border-b">{campaign.name}</td>
-                <td className="py-2 px-4 border-b">{campaign.date}</td>
-                <td className="py-2 px-4 border-b">{campaign.location}</td>
-                <td className="py-2 px-4 border-b">{campaign.description}</td>
-                <td className="py-2 px-4 border-b">
-                  <button 
-                    className="bg-blue-500 text-white py-1 px-2 rounded mr-2"
-                    onClick={() => handleUpdate(campaign.id)}
-                  >
-                    Update
-                  </button>
-                  <button 
-                    className="bg-red-500 text-white py-1 px-2 rounded"
-                    onClick={() => handleDelete(campaign.id)}
-                  >
-                    Delete
-                  </button>
-                </td>
+    <div className="flex min-h-screen bg-gray-50 p-8">
+      <div className="flex-1">
+        <h1 className="text-4xl font-bold text-gray-800 mb-8">Manage Campaigns</h1>
+        <button 
+          className="mb-6 bg-blue-500 text-white py-2 px-6 rounded-lg shadow-md hover:bg-blue-600 transition duration-300"
+          onClick={handleAddCampaign}
+        >
+          Add Campaign
+        </button>
+        <div className="overflow-x-auto bg-white rounded-lg shadow-lg p-6">
+          <table className="min-w-full">
+            <thead>
+              <tr>
+                <th className="py-4 px-6 border-b-2 text-left font-semibold text-gray-700">Photo</th>
+                <th className="py-4 px-6 border-b-2 text-left font-semibold text-gray-700">Name</th>
+                <th className="py-4 px-6 border-b-2 text-left font-semibold text-gray-700">Date</th>
+                <th className="py-4 px-6 border-b-2 text-left font-semibold text-gray-700">Location</th>
+                <th className="py-4 px-6 border-b-2 text-left font-semibold text-gray-700">Description</th>
+                <th className="py-4 px-6 border-b-2 text-left font-semibold text-gray-700">Actions</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {campaigns.map((campaign) => (
+                <tr key={campaign.id} className="hover:bg-gray-100 transition duration-300">
+                  <td className="py-4 px-6 border-b">
+                    <img 
+                      src={campaign.photoUrl || '/default-campaign.jpg'} 
+                      alt={campaign.name} 
+                      className="w-20 h-20 object-cover rounded-lg shadow-md"
+                    />
+                  </td>
+                  <td className="py-4 px-6 border-b text-gray-700">{campaign.name}</td>
+                  <td className="py-4 px-6 border-b text-gray-700">{campaign.date}</td>
+                  <td className="py-4 px-6 border-b text-gray-700">{campaign.location}</td>
+                  <td className="py-4 px-6 border-b text-gray-700">{campaign.description}</td>
+                  <td className="py-4 px-6 border-b flex">
+                    <button 
+                      className="bg-yellow-500 text-white py-2 px-4 rounded-lg shadow-md hover:bg-yellow-600 transition duration-300 mr-2"
+                      onClick={() => handleUpdate(campaign.id)}
+                    >
+                      Update
+                    </button>
+                    <button 
+                      className="bg-red-500 text-white py-2 px-4 rounded-lg shadow-md hover:bg-red-600 transition duration-300"
+                      onClick={() => handleDelete(campaign.id)}
+                    >
+                      Delete
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   );

@@ -10,13 +10,13 @@ const Navigation = () => {
 
   useEffect(() => {
     const token = localStorage.getItem('token');
-    console.log('Token:', token); // Debugging line
+    console.log('Token:', token); 
     if (token) {
       setIsLoggedIn(true);
     } else {
       setIsLoggedIn(false);
     }
-    console.log('Is Logged In:', isLoggedIn); // Debugging line
+    console.log('Is Logged In:', isLoggedIn); 
   }, [isLoggedIn]);
 
   const toggleMenu = () => {
@@ -24,7 +24,7 @@ const Navigation = () => {
   };
 
   const handleSignOut = () => {
-    console.log('Signing out'); // Debugging line
+    console.log('Signing out'); 
     localStorage.removeItem('token');
     setIsLoggedIn(false);
     navigate('/login');
@@ -107,10 +107,6 @@ const Navigation = () => {
         <Link to="/donation" className="mt-4 md:mt-0 px-6 py-2 text-white uppercase whitespace-nowrap bg-orange-300 rounded-[34px]">
           Donate
         </Link>
-        <Link to="/admin-login" className="mt-4 md:mt-0 px-6 py-2 text-white uppercase whitespace-nowrap bg-gray-800 rounded-[34px]">
-  Admin
-</Link>
-
         {isLoggedIn ? (
           <button onClick={handleSignOut} className="mt-4 md:mt-0 px-6 py-2 text-white uppercase whitespace-nowrap bg-red-700 rounded-[34px]">
             Sign Out

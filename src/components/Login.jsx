@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-
-import backgroundImage from '../images/login-background.png';
 import axios from 'axios';
+import backgroundImage from '../images/login-background.png';
 
 function InputField({ label, placeholder, type = 'text', value, onChange }) {
   return (
@@ -22,6 +21,7 @@ function InputField({ label, placeholder, type = 'text', value, onChange }) {
   );
 }
 
+
 function Button({ text, className }) {
   return (
     <button className={`w-full py-3 bg-yellow-600 text-white font-bold rounded-lg hover:bg-yellow-700 transition-colors ${className}`}>
@@ -30,22 +30,32 @@ function Button({ text, className }) {
   );
 }
 
-
-
 function LoginPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [role, setRole] = useState('donor');
+  const [error, setError] = useState('');
   const navigate = useNavigate();
+
+  const handleRoleChange = (e) => {
+    setRole(e.target.value);
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      const response = await axios.post('https://foodbridge-backend-bd8l.onrender.com/api/auth/login', { email, password });
-      localStorage.setItem('token', response.data.token);
-      navigate('/Home'); 
+      const endpoint = role === 'admin'
+        ? 'https://foodbridge-backend-bd8l.onrender.com/api/admin/login'
+        : 'https://foodbridge-backend-bd8l.onrender.com/api/auth/login';
+
+      const response = await axios.post(endpoint, { email, password });
+      const token = role === 'admin' ? response.data.access_token : response.data.token;
+      localStorage.setItem(`${role}Token`, token);
+
+      navigate(role === 'admin' ? '/admin' : '/home'); 
     } catch (error) {
-      console.error('Login failed:', error.response?.data?.error || error.message);
+      setError(error.response?.data?.error || 'Login failed. Please check your credentials.');
     }
   };
 
@@ -60,6 +70,27 @@ function LoginPage() {
         <div className="w-full max-w-lg">
           <h1 className="text-3xl font-semibold text-gray-800 mb-4 text-center">Welcome Back!</h1>
           <p className="text-base text-gray-600 mb-6 text-center">Enter your credentials to access your account.</p>
+
+          <div className="flex flex-col mb-6">
+            <h2 className="text-xl font-medium text-gray-800 mb-4 text-center">Select Your Role</h2>
+            <div className="flex justify-around">
+              <div 
+                className={`flex-1 mx-2 p-4 rounded-lg shadow-md cursor-pointer transition-transform transform hover:scale-105 ${role === 'donor' ? 'bg-yellow-100 border-2 border-yellow-500' : 'bg-white border border-gray-300'}`} 
+                onClick={() => setRole('donor')}
+              >
+                <h3 className="text-lg font-semibold text-gray-800">Donor</h3>
+                <p className="text-gray-600 mt-2">Access donor features and manage donations.</p>
+              </div>
+              <div 
+                className={`flex-1 mx-2 p-4 rounded-lg shadow-md cursor-pointer transition-transform transform hover:scale-105 ${role === 'admin' ? 'bg-yellow-100 border-2 border-yellow-500' : 'bg-white border border-gray-300'}`} 
+                onClick={() => setRole('admin')}
+              >
+                <h3 className="text-lg font-semibold text-gray-800">Admin</h3>
+                <p className="text-gray-600 mt-2">Access admin features and manage the platform.</p>
+              </div>
+            </div>
+          </div>
+
           <form className="flex flex-col w-full" onSubmit={handleSubmit}>
             <InputField
               label="Email address"
@@ -83,11 +114,12 @@ function LoginPage() {
               <span className="ml-2">Remember Me</span>
             </label>
             <Button text="Login" className="mt-6" />
+            {error && <p className="text-red-600 mt-4 text-center">{error}</p>}
           </form>
+
           <p className="text-center text-gray-700 mt-6 text-sm">
             Don't have an account? <Link to="/signup" className="text-yellow-600 font-semibold hover:underline">Create One</Link>
           </p>
-
         </div>
       </div>
     </div>

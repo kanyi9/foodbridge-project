@@ -6,11 +6,12 @@ import AboutUs from './AboutUs';
 import TeamSection from './TeamSection';
 import Footer from './Footer';
 import Campaigns from './Campaigns';
+import Header from './Header';
 
 function Home() {
   return (
     <div className="flex flex-col  bg-white">
-
+      <Header/>
       <Navigation />
       <HeroSection />
       <InfoCards />
