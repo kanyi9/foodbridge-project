@@ -11,7 +11,14 @@ const TeamSection = () => {
     const fetchMembers = async () => {
       try {
         const response = await axios.get('/api/members');
-        setMembers(response.data);
+
+        // Check if response.data is an array before setting members
+        if (Array.isArray(response.data)) {
+          setMembers(response.data);
+        } else {
+          // Handle the case where the response is not as expected
+          setError('Unexpected response format.');
+        }
       } catch (err) {
         setError('Failed to fetch team members.');
       } finally {
@@ -77,3 +84,4 @@ const TeamSection = () => {
 };
 
 export default TeamSection;
+
