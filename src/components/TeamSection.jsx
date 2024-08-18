@@ -10,7 +10,7 @@ const TeamSection = () => {
   useEffect(() => {
     const fetchMembers = async () => {
       try {
-        const response = await axios.get('/api/members');
+        const response = await axios.get('https://foodbridge-backend-bd8l.onrender.com/api/members');
 
         // Check if response.data is an array before setting members
         if (Array.isArray(response.data)) {
