@@ -39,7 +39,7 @@ const TeamSection = () => {
   return (
     <div className="bg-gray-50 py-12">
       <div className="text-center mb-12">
-        <h2 className="text-2xl font-bold text-orange-600">Our Team</h2>
+        <h2 className="text-2xl font-bold text-orange-600"></h2>
         <h1 className="text-4xl font-extrabold text-gray-800 mt-2">Meet Our Amazing Volunteers</h1>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 px-4">

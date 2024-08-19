@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom'; // Import Link from react-router-dom
 
 const Campaigns = () => {
   const [campaigns, setCampaigns] = useState([]);
@@ -30,11 +31,9 @@ const Campaigns = () => {
 
   return (
     <div id="campaigns" className="min-h-screen bg-gray-100 flex flex-col justify-center px-4 md:px-10">
-      <h1 className="text-orange-600 text-lg font-semibold mb-4 text-center">Campaigns</h1>
-      <h2 className="text-gray-800 text-3xl font-bold mb-6 text-center">
-        You can help lots of people by donating just a little.
-      </h2>
-      <button className="bg-orange-400 text-white py-2 px-4 rounded-md mt-4 mb-8 mx-auto">More Causes</button>
+      <h1 className="text-orange-700 text-4xl font-extrabold mb-2 mt-8 text-center uppercase tracking-wide">
+        Our Campaigns
+      </h1>
       <div className="relative overflow-hidden flex flex-col items-center">
         <div
           className="flex transition-transform duration-300 justify-start items-center w-full"
@@ -59,9 +58,12 @@ const Campaigns = () => {
                   <p className="text-gray-600 mb-1">Date: {new Date(campaign.date).toDateString()}</p>
                   <p className="text-gray-500 mb-4">Description: {campaign.description}</p>
                   <div className="flex justify-between">
-                    <button className="bg-orange-400 text-white py-2 px-4 rounded-md hover:bg-orange-500">
+                    <Link 
+                      to="/donation" 
+                      className="bg-orange-400 text-white py-2 px-4 rounded-md hover:bg-orange-500"
+                    >
                       Donate
-                    </button>
+                    </Link>
                     <button className="bg-gray-300 text-gray-700 py-2 px-4 rounded-md hover:bg-gray-400">
                       Volunteer
                     </button>
