@@ -21,7 +21,6 @@ function InputField({ label, placeholder, type = 'text', value, onChange }) {
   );
 }
 
-
 function Button({ text, className }) {
   return (
     <button className={`w-full py-3 bg-yellow-600 text-white font-bold rounded-lg hover:bg-yellow-700 transition-colors ${className}`}>
@@ -30,11 +29,22 @@ function Button({ text, className }) {
   );
 }
 
+function AlertCard({ type, message }) {
+  const bgColor = type === 'error' ? 'bg-red-100' : 'bg-yellow-100';
+  const textColor = type === 'error' ? 'text-red-600' : 'text-yellow-600';
+  return (
+    <div className={`p-4 mb-4 rounded-lg ${bgColor} border border-gray-200`}>
+      <p className={`text-center ${textColor} font-semibold`}>{message}</p>
+    </div>
+  );
+}
+
 function LoginPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [role, setRole] = useState('donor');
   const [error, setError] = useState('');
+  const [success, setSuccess] = useState('');
   const navigate = useNavigate();
 
   const handleRoleChange = (e) => {
@@ -46,8 +56,8 @@ function LoginPage() {
 
     try {
       const endpoint = role === 'admin'
-        ? 'https://foodbridge-backend-bd8l.onrender.com/api/admin/login'
-        : 'https://foodbridge-backend-bd8l.onrender.com/api/auth/login';
+        ? 'http://127.0.0.1:5000/api/admin/login'
+        : 'http://127.0.0.1:5000/api/auth/login';
 
       const response = await axios.post(endpoint, { email, password });
       const token = role === 'admin' ? response.data.access_token : response.data.token;
@@ -55,7 +65,14 @@ function LoginPage() {
 
       navigate(role === 'admin' ? '/admin' : '/home'); 
     } catch (error) {
-      setError(error.response?.data?.error || 'Login failed. Please check your credentials.');
+      if (error.response?.status === 403) {
+        setError('Your account has been deactivated. Please contact support.');
+      } else if (error.response?.status === 401) {
+        setError('Invalid credentials. Please check your email and password.');
+      } else {
+        setError('Login failed. Please try again later.');
+      }
+      setSuccess('');
     }
   };
 
@@ -114,7 +131,8 @@ function LoginPage() {
               <span className="ml-2">Remember Me</span>
             </label>
             <Button text="Login" className="mt-6" />
-            {error && <p className="text-red-600 mt-4 text-center">{error}</p>}
+            {error && <AlertCard type="error" message={error} />}
+            {success && <AlertCard type="success" message={success} />}
           </form>
 
           <p className="text-center text-gray-700 mt-6 text-sm">

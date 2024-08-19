@@ -13,9 +13,9 @@ const AddCampaign = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const token = localStorage.getItem('adminToken');
-
+  
     try {
-      const response = await fetch('https://foodbridge-backend-bd8l.onrender.com/api/admin/campaigns', {
+      const response = await fetch('http://127.0.0.1:5000/api/admin/events', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -23,11 +23,12 @@ const AddCampaign = () => {
         },
         body: JSON.stringify({ name, date, location, description, pictureUrl }),
       });
-
+  
       if (response.ok) {
         navigate('/admin/campaigns');
       } else {
-        console.error('Error adding campaign');
+        const errorData = await response.json();
+        console.error('Error adding campaign:', errorData.error);
       }
     } catch (error) {
       console.error('Error adding campaign:', error);

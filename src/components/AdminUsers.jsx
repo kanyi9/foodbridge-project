@@ -7,7 +7,7 @@ const AdminUsers = () => {
     const fetchUsers = async () => {
       const token = localStorage.getItem('adminToken');
       try {
-        const response = await fetch('https://foodbridge-backend-bd8l.onrender.com/api/admin/users', {
+        const response = await fetch('http://127.0.0.1:5000/api/admin/users', {
           headers: {
             'Authorization': `Bearer ${token}`,
           },
@@ -25,7 +25,7 @@ const AdminUsers = () => {
   const handleToggleStatus = async (userId, isActive) => {
     const token = localStorage.getItem('adminToken');
     try {
-      const response = await fetch(`https://foodbridge-backend-bd8l.onrender.com/api/admin/users/${userId}/status`, {
+      const response = await fetch(`http://127.0.0.1:5000/api/admin/users/${userId}/status`, {
         method: 'PUT',
         headers: {
           'Authorization': `Bearer ${token}`,
@@ -70,8 +70,8 @@ const AdminUsers = () => {
                     onClick={() => handleToggleStatus(user.id, user.isActive)}
                     className={`py-2 px-4 rounded-full text-white font-semibold transition duration-300 ${
                       user.isActive 
-                      ? 'bg-green-500 hover:bg-green-700' 
-                      : 'bg-red-500 hover:bg-red-700'
+                      ? 'bg-red-500 hover:bg-red-700' 
+                      : 'bg-green-500 hover:bg-green-700'
                     }`}
                   >
                     {user.isActive ? 'Deactivate' : 'Activate'}

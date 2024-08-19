@@ -10,40 +10,77 @@ const AdminFeedback = () => {
     const fetchFeedback = async () => {
       const token = localStorage.getItem('adminToken');
       try {
-        const response = await fetch('https://foodbridge-backend-bd8l.onrender.com/api/admin/feedback', {
+        const response = await fetch('http://127.0.0.1:5000/api/admin/feedback', {
           headers: {
             'Authorization': `Bearer ${token}`
           }
         });
+        
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        
         const data = await response.json();
-
         console.log('Feedback Data:', data); // Log the received data
-
-        setFeedback(data.feedback || []);
+        
+        // Ensure the feedback list includes id, userId, username, email, and message
+        setFeedback(data.feedback.map(item => ({
+          id: item.id,                // Feedback ID
+          userId: item.userId,        // User ID associated with the feedback
+          username: item.username,    // Username of the user
+          email: item.email,          // Email of the user
+          message: item.message       // The feedback message
+        })) || []);
+        
       } catch (error) {
         console.error('Error fetching feedback data:', error);
       }
     };
-
+  
     fetchFeedback();
   }, []);
+  
+  
 
   const handleReplyChange = (e) => {
     setReply(e.target.value);
   };
 
   const handleSelectFeedback = (item) => {
-    setSelectedFeedback(item);
-    setReply('');
+    console.log('Selected Feedback Item:', item); // Debugging log
+    
+    if (item && item.id && item.userId && item.username && item.email && item.message) {
+      // Set the selected feedback with all required fields
+      setSelectedFeedback({
+        id: item.id,                // Feedback ID
+        userId: item.userId,        // User ID associated with the feedback
+        username: item.username,    // Username of the user
+        email: item.email,          // Email of the user
+        message: item.message       // The feedback message
+      });
+      
+      setReply(''); // Clear the reply field
+    } else {
+      console.error('Selected feedback item is missing required details:', item);
+    }
   };
+  
+  
 
   const handleSendReply = async () => {
     if (!selectedFeedback || !reply) return;
-
+  
+    console.log('Sending reply with:', {
+      userId: selectedFeedback.userId,
+      userEmail: selectedFeedback.email,
+      feedbackId: selectedFeedback.id, // Ensure this is included
+      reply: reply
+    }); // Debugging log
+  
     const token = localStorage.getItem('adminToken');
     setLoading(true);
     try {
-      const response = await fetch('https://foodbridge-backend-bd8l.onrender.com/api/admin/feedback/reply', {
+      const response = await fetch('http://127.0.0.1:5000/api/admin/feedback/reply', {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${token}`,
@@ -52,24 +89,28 @@ const AdminFeedback = () => {
         body: JSON.stringify({
           userId: selectedFeedback.userId,
           userEmail: selectedFeedback.email,
-          feedback: reply
+          feedbackId: selectedFeedback.id, // Ensure this is correctly assigned
+          reply: reply
         })
       });
-
-      const data = await response.json();
-      if (response.ok) {
-        alert('Reply sent successfully');
-        setReply('');
-        setSelectedFeedback(null);
-      } else {
-        alert(`Error: ${data.error}`);
+  
+      if (!response.ok) {
+        const data = await response.json();
+        throw new Error(data.error || 'Failed to send reply');
       }
+  
+      alert('Reply sent successfully');
+      setReply('');
+      setSelectedFeedback(null);
     } catch (error) {
       console.error('Error sending reply:', error);
+      alert(`Error: ${error.message}`);
     } finally {
       setLoading(false);
     }
   };
+  
+  
 
   return (
     <div className="flex min-h-screen bg-gray-100 p-10">
@@ -122,5 +163,3 @@ const AdminFeedback = () => {
 };
 
 export default AdminFeedback;
-
-

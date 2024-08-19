@@ -2,22 +2,29 @@ import React, { useState, useEffect } from 'react';
 
 const ManageMembers = () => {
   const [members, setMembers] = useState([]);
-  const [newMember, setNewMember] = useState({ name: '', position: '', imageUrl: '' });
+  const [newMember, setNewMember] = useState({ name: '', position: '', image_url: '' });
   const [error, setError] = useState('');
 
   useEffect(() => {
     const fetchMembers = async () => {
       const token = localStorage.getItem('adminToken');
       try {
-        const response = await fetch('https://foodbridge-backend-bd8l.onrender.com/api/admin/members', {
+        const response = await fetch('http://127.0.0.1:5000/api/members', {  // Updated URL
           headers: {
             'Authorization': `Bearer ${token}`
           }
         });
+
+        // Check if the response is OK and JSON
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
         const data = await response.json();
-        setMembers(data.members);
+        setMembers(data);  // Updated to match the shape of the response
       } catch (error) {
         console.error('Error fetching members:', error);
+        setError('An error occurred while fetching members.');
       }
     };
 
@@ -28,26 +35,27 @@ const ManageMembers = () => {
     e.preventDefault();
     const token = localStorage.getItem('adminToken');
   
-    // Rename the local variable to avoid shadowing
     const memberData = {
       name: newMember.name,
       position: newMember.position,
-      image_url: newMember.imageUrl  
+      image_url: newMember.image_url  // Ensure this matches what the backend expects
     };
   
+    console.log('Sending member data:', memberData);  // Debugging line
+    
     try {
-      const response = await fetch('https://foodbridge-backend-bd8l.onrender.com/api/admin/members', {
+      const response = await fetch('http://127.0.0.1:5000/api/admin/members', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${token}`
         },
-        body: JSON.stringify(memberData)  // Send the correct data
+        body: JSON.stringify(memberData)
       });
   
       if (response.ok) {
         const data = await response.json();
-        setNewMember({ name: '', position: '', imageUrl: '' });
+        setNewMember({ name: '', position: '', image_url: '' });
         setError('');
         setMembers([...members, data.member]);
       } else {
@@ -60,11 +68,10 @@ const ManageMembers = () => {
     }
   };
   
-  
   const handleDeleteMember = async (id) => {
     const token = localStorage.getItem('adminToken');
     try {
-      const response = await fetch(`https://foodbridge-backend-bd8l.onrender.com/admin/members/${id}`, {
+      const response = await fetch(`http://127.0.0.1:5000/api/admin/members/${id}`, {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${token}`
@@ -106,8 +113,8 @@ const ManageMembers = () => {
           />
           <input
             type="url"
-            value={newMember.imageUrl}
-            onChange={(e) => setNewMember({ ...newMember, imageUrl: e.target.value })}
+            value={newMember.image_url}
+            onChange={(e) => setNewMember({ ...newMember, image_url: e.target.value })}
             placeholder="Image URL"
             className="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 transition duration-300"
             required
@@ -128,7 +135,7 @@ const ManageMembers = () => {
           <div className="flex space-x-8 py-4">
             {members.map(member => (
               <div key={member.id} className="bg-white p-6 rounded-lg shadow-lg flex flex-col items-center min-w-[200px]">
-                <img src={member.imageUrl} alt={member.name} className="w-24 h-24 rounded-full object-cover mb-4" />
+                 <img src={member.image_url} alt={member.name} className="w-24 h-24 rounded-full object-cover mb-4" />
                 <h3 className="text-xl font-semibold text-gray-800 mb-2">{member.name}</h3>
                 <p className="text-gray-600 mb-4">{member.position}</p>
                 <button
@@ -147,3 +154,4 @@ const ManageMembers = () => {
 };
 
 export default ManageMembers;
+
