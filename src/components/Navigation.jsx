@@ -102,7 +102,7 @@ const Navigation = () => {
       </div>
       <div className="flex space-x-4">
         <Link to="/donation" className="mt-4 md:mt-0 px-6 py-2 text-white uppercase whitespace-nowrap bg-orange-300 rounded-[34px]">
-          Donate
+          DONATE
         </Link>
         {isLoggedIn ? (
           <button onClick={handleSignOut} className="mt-4 md:mt-0 px-6 py-2 text-white uppercase whitespace-nowrap bg-red-700 rounded-[34px]">
@@ -110,7 +110,7 @@ const Navigation = () => {
           </button>
         ) : (
           <Link to="/login" className="mt-4 md:mt-0 px-6 py-2 text-white uppercase whitespace-nowrap bg-red-700 rounded-[34px]">
-            Log In
+            LOG OUT
           </Link>
         )}
       </div>
