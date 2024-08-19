@@ -69,12 +69,10 @@ function SignupPage() {
 
   return (
     <div className="flex min-h-screen">
-      {/* Image Section */}
       <div className="w-1/2 hidden md:block">
         <img src={backgroundImage} alt="Background" className="w-full h-full object-cover" />
       </div>
 
-      {/* Signup Form Section */}
       <div className="flex items-center justify-center w-full md:w-1/2 bg-white px-10 py-12 md:px-16">
         <div className="bg-white p-8 rounded-3xl shadow-xl w-full">
           <h1 className="text-4xl font-bold text-gray-800 text-center mb-8">Join Us Now</h1>
