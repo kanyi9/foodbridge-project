@@ -113,7 +113,7 @@ const Navigation = () => {
           </button>
         ) : (
           <Link to="/login" className="mt-4 md:mt-0 px-6 py-2 text-white uppercase whitespace-nowrap  bg-red-700 rounded-[34px]">
-            Sign Out
+            LOG OUT
           </Link>
         )}
       </div>

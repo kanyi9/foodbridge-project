@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import Modal from './Modal'; // Import the Modal component
+import Modal from './Modal'; 
+import contactImage from '../images/campaign3.jpg'; 
 
 function InputField({ label, placeholder, type = 'text', rows, value, onChange, name }) {
   return (
-    <div className="flex flex-col mt-5 w-full font-medium min-h-[58px]">
-      <label className="gap-2.5 self-start text-sm text-black">
+    <div className="flex flex-col mt-5 w-full font-medium">
+      <label className="text-sm text-gray-700 mb-2">
         {label}
       </label>
       {type === 'textarea' ? (
@@ -16,7 +17,7 @@ function InputField({ label, placeholder, type = 'text', rows, value, onChange, 
           onChange={onChange}
           placeholder={placeholder}
           rows={rows}
-          className="flex overflow-hidden gap-2.5 items-center py-2.5 pl-2.5 w-full text-xs rounded-xl max-w-[404px] min-h-[32px] text-black"
+          className="w-full p-3 border border-gray-300 rounded-lg text-gray-700 focus:outline-none focus:ring-2 focus:ring-yellow-500 resize-none"
           aria-label={label}
         />
       ) : (
@@ -26,7 +27,7 @@ function InputField({ label, placeholder, type = 'text', rows, value, onChange, 
           value={value}
           onChange={onChange}
           placeholder={placeholder}
-          className="flex overflow-hidden gap-2.5 items-center py-2.5 pl-2.5 w-full text-xs rounded-xl max-w-[404px] min-h-[32px] text-black"
+          className="w-full p-3 border border-gray-300 rounded-lg text-gray-700 focus:outline-none focus:ring-2 focus:ring-yellow-500"
           aria-label={label}
         />
       )}
@@ -37,20 +38,18 @@ function InputField({ label, placeholder, type = 'text', rows, value, onChange, 
 // Button Component
 function Button({ text, onClick }) {
   return (
-    <div className="flex flex-col pb-2.5 mt-8 bg-slate-100">
+    <div className="flex flex-col mt-8">
       <button
         onClick={onClick}
-        className="flex overflow-hidden justify-center gap-2.5 items-center py-2.5 pl-2.5 w-full bg-yellow-800 rounded-xl max-w-[404px] min-h-[32px]"
+        className="w-full bg-yellow-600 text-white font-semibold py-3 rounded-lg shadow-md hover:bg-yellow-700 transition duration-300"
       >
-        <span className="z-10 self-center mt-0 text-sm font-bold text-white">
-          {text}
-        </span>
+        {text}
       </button>
     </div>
   );
 }
 
-// ContactUsForm Component
+// ContactUs Component
 function ContactUs() {
   const [formData, setFormData] = useState({
     name: '',
@@ -85,44 +84,46 @@ function ContactUs() {
   const closeModal = () => setModal({ ...modal, isOpen: false });
 
   return (
-    <main className="flex overflow-hidden flex-col justify-center items-center px-20 py-44 bg-white max-md:px-5 max-md:py-24">
-      <section className="flex flex-col pb-10 max-w-full w-[404px]">
-        <div className="flex gap-2.5 items-start pb-16">
-          <div className="flex flex-col min-w-[240px] w-[404px] p-6 border border-orange-300 rounded-[45px]">
-            <h1 className="gap-2.5 self-start text-3xl font-medium text-black min-h-[53px]">
-              Contact Us
-            </h1>
-            <form onSubmit={handleSubmit}>
-              <InputField
-                label="Name"
-                placeholder="Enter your name"
-                name="name"
-                value={formData.name}
-                onChange={handleChange}
-              />
-              <InputField
-                label="Email address"
-                placeholder="Enter your email"
-                type="email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-              />
-              <InputField
-                label="Message"
-                placeholder="Enter your message"
-                type="textarea"
-                rows={4}
-                name="message"
-                value={formData.message}
-                onChange={handleChange}
-              />
-              <Button text="Submit" />
-            </form>
-            <p className="flex flex-col self-center mt-6 max-w-full text-sm font-medium text-black min-h-[23px] w-[129px]">
-              Go back to <Link to="/"><span className="text-yellow-800">Home</span></Link>
-            </p>
-          </div>
+    <main className="flex flex-col md:flex-row h-screen overflow-hidden">
+      <section className="flex-1 bg-cover bg-center" style={{ backgroundImage: `url(${contactImage})` }}></section>
+      <section className="flex-1 flex items-center justify-center p-10 bg-gray-100 relative">
+        <div className="absolute top-6 right-6">
+          <Link
+            to="/"
+            className="bg-yellow-600 text-white px-4 py-2 rounded-full text-lg font-medium shadow-md hover:bg-yellow-700 transition duration-300"
+          >
+            Home
+          </Link>
+        </div>
+        <div className="flex flex-col max-w-md w-full bg-white p-8 border border-gray-300 rounded-lg shadow-lg">
+          <h1 className="text-3xl font-bold text-gray-800 mb-6">Contact Us</h1>
+          <form onSubmit={handleSubmit}>
+            <InputField
+              label="Name"
+              placeholder="Enter your name"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+            />
+            <InputField
+              label="Email address"
+              placeholder="Enter your email"
+              type="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+            />
+            <InputField
+              label="Message"
+              placeholder="Enter your message"
+              type="textarea"
+              rows={4}
+              name="message"
+              value={formData.message}
+              onChange={handleChange}
+            />
+            <Button text="Submit" />
+          </form>
         </div>
       </section>
       <Modal
