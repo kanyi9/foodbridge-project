@@ -93,7 +93,6 @@ const DonationForm = () => {
           );
         }
       } else {
-        // If email does not exist, notify the user to sign up
         toast.info('Email not found. Please sign up before making a donation.');
       }
     } catch (error) {

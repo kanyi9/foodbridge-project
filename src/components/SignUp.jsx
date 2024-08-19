@@ -43,7 +43,7 @@ function SignupPage() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await fetch(' https://foodbridge-backend-bd8l.onrender.com/api/auth/register', {
+      const response = await fetch('https://foodbridge-backend-bd8l.onrender.com/api/auth/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
