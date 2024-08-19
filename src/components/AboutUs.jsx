@@ -8,9 +8,9 @@ const AboutUs = () => {
           About Us
         </h2>
         <p className="text-lg md:text-xl leading-7 text-gray-800">
-          At FootBridge, we believe that no one should go hungry. Our mission is to create a community-driven platform where volunteers can contribute their time, resources, and skills to help those in need. Whether it's through food donations, financial contributions, or volunteering, we provide an opportunity for everyone to make a meaningful impact.
+          At FoodBridge, we believe that no one should go hungry. Our mission is to create a community-driven platform where volunteers can contribute their time, resources, and skills to help those in need. Whether it's through food donations, financial contributions, or volunteering, we provide an opportunity for everyone to make a meaningful impact.
           <br /><br />
-          FootBridge was born out of the desire to bring people together to combat hunger and food insecurity. We work closely with local communities, food banks, and shelters to ensure that donations reach those who need them most. Every contribution, big or small, helps us move closer to a world where everyone has access to nutritious meals.
+          Foodbridge was born out of the desire to bring people together to combat hunger and food insecurity. We work closely with local communities, food banks, and shelters to ensure that donations reach those who need them most. Every contribution, big or small, helps us move closer to a world where everyone has access to nutritious meals.
         </p>
       </div>
       <div className="flex justify-center md:w-1/2">

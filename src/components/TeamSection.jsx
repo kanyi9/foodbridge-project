@@ -10,7 +10,7 @@ const TeamSection = () => {
   useEffect(() => {
     const fetchMembers = async () => {
       try {
-        const response = await axios.get('/api/members');
+        const response = await axios.get('http://127.0.0.1:5000/api/members');
         setMembers(response.data);
       } catch (err) {
         setError('Failed to fetch team members.');

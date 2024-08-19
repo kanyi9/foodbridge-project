@@ -46,8 +46,8 @@ function LoginPage() {
 
     try {
       const endpoint = role === 'admin'
-        ? 'https://foodbridge-backend-bd8l.onrender.com/api/admin/login'
-        : 'https://foodbridge-backend-bd8l.onrender.com/api/auth/login';
+        ? 'http://127.0.0.1:5000/api/admin/login'
+        : 'http://127.0.0.1:5000/api/auth/login';
 
       const response = await axios.post(endpoint, { email, password });
       const token = role === 'admin' ? response.data.access_token : response.data.token;

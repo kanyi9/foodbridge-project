@@ -10,13 +10,11 @@ const Navigation = () => {
 
   useEffect(() => {
     const token = localStorage.getItem('token');
-    console.log('Token:', token); 
     if (token) {
       setIsLoggedIn(true);
     } else {
       setIsLoggedIn(false);
     }
-    console.log('Is Logged In:', isLoggedIn); 
   }, [isLoggedIn]);
 
   const toggleMenu = () => {
@@ -24,7 +22,6 @@ const Navigation = () => {
   };
 
   const handleSignOut = () => {
-    console.log('Signing out'); 
     localStorage.removeItem('token');
     setIsLoggedIn(false);
     navigate('/login');
@@ -54,8 +51,8 @@ const Navigation = () => {
           </svg>
         </button>
       </div>
-      <div className={`flex-col md:flex-row md:flex md:items-center md:space-x-8 ${isMenuOpen ? 'flex' : 'hidden'}`}>
-        <div className="flex flex-col md:flex-row md:items-center">
+      <div className={`flex-col md:flex-row md:flex md:items-center ${isMenuOpen ? 'flex' : 'hidden'}`}>
+        <div className="flex flex-col md:flex-row md:items-center ml-4 space-y-2 md:space-y-0 md:space-x-6">
           {navItems.map((item, index) => {
             const routePath = `/${item.toLowerCase().replace(/\s+/g, '-') === 'home' ? '' : item.toLowerCase().replace(/\s+/g, '-')}`;
             const isActive = location.pathname === routePath;
@@ -66,7 +63,7 @@ const Navigation = () => {
                 <button
                   key={index}
                   onClick={() => scrollToAnchor('campaigns')}
-                  className={`block px-3 py-2 text-lg font-medium border-b-2 transition-colors duration-300 ${
+                  className={`block px-2 py-2 text-lg font-medium border-b-2 transition-colors duration-300 ${
                     isActive ? 'text-orange-500 border-orange-500' : 'text-gray-700 hover:text-gray-900 hover:border-gray-900'
                   }`}
                 >
@@ -78,7 +75,7 @@ const Navigation = () => {
                 <Link
                   key={index}
                   to="/feedback"
-                  className={`block px-3 py-2 text-lg font-medium border-b-2 transition-colors duration-300 ${
+                  className={`block px-2 py-2 text-lg font-medium border-b-2 transition-colors duration-300 ${
                     isActive ? 'text-orange-500 border-orange-500' : 'text-gray-700 hover:text-gray-900 hover:border-gray-900'
                   }`}
                 >
@@ -94,7 +91,7 @@ const Navigation = () => {
                     e.preventDefault();
                     scrollToAnchor(anchorName);
                   }}
-                  className={`block px-3 py-2 text-lg font-medium border-b-2 transition-colors duration-300 ${
+                  className={`block px-2 py-2 text-lg font-medium border-b-2 transition-colors duration-300 ${
                     isActive ? 'text-orange-500 border-orange-500' : 'text-gray-700 hover:text-gray-900 hover:border-gray-900'
                   }`}
                 >
@@ -104,18 +101,20 @@ const Navigation = () => {
             }
           })}
         </div>
-        <Link to="/donation" className="mt-4 md:mt-0 px-6 py-2 text-white uppercase whitespace-nowrap bg-orange-300 rounded-[34px]">
-          Donate
-        </Link>
-        {isLoggedIn ? (
-          <button onClick={handleSignOut} className="mt-4 md:mt-0 px-6 py-2 text-white uppercase whitespace-nowrap bg-red-700 rounded-[34px]">
-            Sign Out
-          </button>
-        ) : (
-          <Link to="/login" className="mt-4 md:mt-0 px-6 py-2 text-white uppercase whitespace-nowrap bg-teal-700 rounded-[34px]">
-            Sign In
+        <div className="flex items-center space-x-4 mt-4 md:mt-0">
+          <Link to="/donation" className="px-4 py-2 text-white uppercase whitespace-nowrap bg-orange-300 rounded-[34px]">
+            Donate
           </Link>
-        )}
+          {isLoggedIn ? (
+            <button onClick={handleSignOut} className="px-4 py-2 text-white uppercase whitespace-nowrap bg-red-700 rounded-[34px]">
+              Sign Out
+            </button>
+          ) : (
+            <Link to="/login" className="px-4 py-2 text-white uppercase whitespace-nowrap bg-teal-700 rounded-[34px]">
+              Sign In
+            </Link>
+          )}
+        </div>
       </div>
     </nav>
   );
