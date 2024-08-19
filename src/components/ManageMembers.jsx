@@ -32,7 +32,7 @@ const ManageMembers = () => {
     const memberData = {
       name: newMember.name,
       position: newMember.position,
-      image_url: newMember.imageUrl  // Ensure this matches the backend field
+      image_url: newMember.imageUrl  
     };
   
     try {
@@ -49,7 +49,7 @@ const ManageMembers = () => {
         const data = await response.json();
         setNewMember({ name: '', position: '', imageUrl: '' });
         setError('');
-        setMembers([...members, data.member]); // Ensure this matches the response structure
+        setMembers([...members, data.member]);
       } else {
         const errorData = await response.json();
         setError(`Failed to add member: ${errorData.error}`);
