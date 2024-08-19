@@ -45,7 +45,7 @@ const DonationForm = () => {
 
       // Check if the email exists in the database
       const emailCheckResponse = await axios.post(
-        'http://localhost:5000/api/check-email',  // Endpoint to check email
+        'http://localhost:5000/api/check-email',  
         { email }
       );
 
