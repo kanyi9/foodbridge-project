@@ -10,7 +10,7 @@ const AdminFeedback = () => {
     const fetchFeedback = async () => {
       const token = localStorage.getItem('adminToken');
       try {
-        const response = await fetch('http://127.0.0.1:5000/api/admin/feedback', {
+        const response = await fetch('https://foodbridge-backend-bd8l.onrender.com/api/admin/feedback', {
           headers: {
             'Authorization': `Bearer ${token}`
           }
@@ -80,7 +80,7 @@ const AdminFeedback = () => {
     const token = localStorage.getItem('adminToken');
     setLoading(true);
     try {
-      const response = await fetch('http://127.0.0.1:5000/api/admin/feedback/reply', {
+      const response = await fetch('https://foodbridge-backend-bd8l.onrender.com/api/admin/feedback/reply', {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${token}`,

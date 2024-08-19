@@ -23,7 +23,7 @@ const FeedbackPage = () => {
       }
 
       await axios.post(
-        'http://localhost:5000/feedback',
+        'https://foodbridge-backend-bd8l.onrender.com/feedback',
         { message },
         {
           headers: {

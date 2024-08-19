@@ -15,7 +15,7 @@ const AddCampaign = () => {
     const token = localStorage.getItem('adminToken');
   
     try {
-      const response = await fetch('http://127.0.0.1:5000/api/admin/events', {
+      const response = await fetch('https://foodbridge-backend-bd8l.onrender.com/api/admin/events', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

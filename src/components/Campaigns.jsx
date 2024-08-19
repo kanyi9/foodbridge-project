@@ -9,7 +9,7 @@ const Campaigns = () => {
   useEffect(() => {
     const fetchCampaigns = async () => {
       try {
-        const response = await axios.get('http://127.0.0.1:5000/api/events/incomplete');
+        const response = await axios.get('https://foodbridge-backend-bd8l.onrender.com/api/events/incomplete');
         console.log(response.data); 
         setCampaigns(response.data);
       } catch (error) {

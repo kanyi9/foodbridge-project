@@ -19,7 +19,7 @@ const AdminCampaigns = () => {
       }
 
       try {
-        const response = await fetch('http://127.0.0.1:5000/api/admin/events', {
+        const response = await fetch('https://foodbridge-backend-bd8l.onrender.com/api/admin/events', {
           method: 'GET',
           headers: {
             'Authorization': `Bearer ${token}`,
@@ -64,7 +64,7 @@ const AdminCampaigns = () => {
     }
 
     try {
-      const response = await fetch(`http://127.0.0.1:5000/api/admin/events/${id}/complete`, {
+      const response = await fetch(`https://foodbridge-backend-bd8l.onrender.com/api/admin/events/${id}/complete`, {
         method: 'PATCH',
         headers: {
           'Authorization': `Bearer ${token}`,

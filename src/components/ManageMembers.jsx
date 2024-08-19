@@ -9,7 +9,7 @@ const ManageMembers = () => {
     const fetchMembers = async () => {
       const token = localStorage.getItem('adminToken');
       try {
-        const response = await fetch('http://127.0.0.1:5000/api/members', {  // Updated URL
+        const response = await fetch('https://foodbridge-backend-bd8l.onrender.com/api/members', {  // Updated URL
           headers: {
             'Authorization': `Bearer ${token}`
           }
@@ -44,7 +44,7 @@ const ManageMembers = () => {
     console.log('Sending member data:', memberData);  // Debugging line
     
     try {
-      const response = await fetch('http://127.0.0.1:5000/api/admin/members', {
+      const response = await fetch('https://foodbridge-backend-bd8l.onrender.com/api/admin/members', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -71,7 +71,7 @@ const ManageMembers = () => {
   const handleDeleteMember = async (id) => {
     const token = localStorage.getItem('adminToken');
     try {
-      const response = await fetch(`http://127.0.0.1:5000/api/admin/members/${id}`, {
+      const response = await fetch(`https://foodbridge-backend-bd8l.onrender.com/api/admin/members/${id}`, {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${token}`

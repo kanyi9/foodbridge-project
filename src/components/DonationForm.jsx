@@ -45,14 +45,14 @@ const DonationForm = () => {
 
       // Check if the email exists in the database
       const emailCheckResponse = await axios.post(
-        'http://localhost:5000/api/check-email',  
+        'https://foodbridge-backend-bd8l.onrender.com/api/check-email',  
         { email }
       );
 
       if (emailCheckResponse.data.exists) {
         // If email exists, proceed with payment and donation
         const paymentIntentResponse = await axios.post(
-          'http://127.0.0.1:5000/api/create-payment-intent',
+          'https://foodbridge-backend-bd8l.onrender.com/api/create-payment-intent',
           { amount },
           {
             headers: {
@@ -78,7 +78,7 @@ const DonationForm = () => {
           toast.success('Donation successful! Thank you for your contribution.');
 
           await axios.post(
-            'http://localhost:5000/api/save-donation',
+            'https://foodbridge-backend-bd8l.onrender.com/api/save-donation',
             {
               email,
               amount: parseFloat(amount),

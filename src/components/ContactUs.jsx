@@ -67,7 +67,7 @@ function ContactUs() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://127.0.0.1:5000/api/feedback', formData);
+      const response = await axios.post('https://foodbridge-backend-bd8l.onrender.com/api/feedback', formData);
       setModal({
         isOpen: true,
         message: response.data.message || 'Feedback submitted successfully!',

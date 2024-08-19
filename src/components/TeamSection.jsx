@@ -10,7 +10,7 @@ const TeamSection = () => {
   useEffect(() => {
     const fetchMembers = async () => {
       try {
-        const response = await axios.get('http://127.0.0.1:5000/api/members'); // Correct URL
+        const response = await axios.get('https://foodbridge-backend-bd8l.onrender.com/api/members'); // Correct URL
 
         // Check if response.data is an array
         if (Array.isArray(response.data)) {
