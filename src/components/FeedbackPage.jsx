@@ -27,7 +27,7 @@ const FeedbackPage = () => {
         { message },
         {
           headers: {
-            Authorization: `Bearer ${token}`, // Corrected template literal
+            Authorization: `Bearer ${token}`, 
           },
         }
       );
