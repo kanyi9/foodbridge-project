@@ -41,7 +41,7 @@ function LandingPage() {
         <p className="mt-8 text-3xl font-semibold animate-slideIn">Let's Save Humanity</p>
 
         <Link
-          to="/signup"
+          to="/home"
           className="mt-12 px-10 py-5 bg-yellow-500 text-black text-xl font-bold rounded-full hover:bg-yellow-600 transition-colors animate-bounce"
         >
           Join Us
